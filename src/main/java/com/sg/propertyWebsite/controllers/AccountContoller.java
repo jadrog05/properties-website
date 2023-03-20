@@ -13,6 +13,7 @@ public class AccountContoller {
     @GetMapping("signin")
     public void getSignin(Model model){
 
+        System.out.println("James' test commit");
     }
 
 }
