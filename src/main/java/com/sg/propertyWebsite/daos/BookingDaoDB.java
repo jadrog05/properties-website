@@ -1,9 +1,11 @@
 package com.sg.propertyWebsite.daos;
 
 import com.sg.propertyWebsite.entities.Booking;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class BookingDaoDB implements BookingDao{
     @Override
     public Booking getBookingByID(int id) {

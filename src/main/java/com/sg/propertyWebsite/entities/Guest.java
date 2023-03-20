@@ -2,7 +2,6 @@ package com.sg.propertyWebsite.entities;
 
 public class Guest {
     private int guestID;
-    private int accountID;
     private String firstName;
     private String lastName;
     private String email;
@@ -15,14 +14,6 @@ public class Guest {
 
     public void setGuestID(int guestID) {
         this.guestID = guestID;
-    }
-
-    public int getAccountID() {
-        return accountID;
-    }
-
-    public void setAccountID(int accountID) {
-        this.accountID = accountID;
     }
 
     public String getFirstName() {
@@ -63,5 +54,32 @@ public class Guest {
 
     public void setPostcode(String postcode) {
         this.postcode = postcode;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Guest guest)) return false;
+
+        if (getGuestID() != guest.getGuestID()) return false;
+        if (getFirstName() != null ? !getFirstName().equals(guest.getFirstName()) : guest.getFirstName() != null)
+            return false;
+        if (getLastName() != null ? !getLastName().equals(guest.getLastName()) : guest.getLastName() != null)
+            return false;
+        if (getEmail() != null ? !getEmail().equals(guest.getEmail()) : guest.getEmail() != null) return false;
+        if (getPhoneNumber() != null ? !getPhoneNumber().equals(guest.getPhoneNumber()) : guest.getPhoneNumber() != null)
+            return false;
+        return getPostcode() != null ? getPostcode().equals(guest.getPostcode()) : guest.getPostcode() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getGuestID();
+        result = 31 * result + (getFirstName() != null ? getFirstName().hashCode() : 0);
+        result = 31 * result + (getLastName() != null ? getLastName().hashCode() : 0);
+        result = 31 * result + (getEmail() != null ? getEmail().hashCode() : 0);
+        result = 31 * result + (getPhoneNumber() != null ? getPhoneNumber().hashCode() : 0);
+        result = 31 * result + (getPostcode() != null ? getPostcode().hashCode() : 0);
+        return result;
     }
 }
