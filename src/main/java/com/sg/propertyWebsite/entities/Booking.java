@@ -2,12 +2,13 @@ package com.sg.propertyWebsite.entities;
 
 public class Booking {
     private int bookingID;
-    private int adults;
-    private int children;
+
+    private int guestID;
+    private int numberOfGuests;
     private String startDate;
     private String endDate;
     private double totalCost;
-    private int guestID;
+
 
     public int getBookingID() {
         return bookingID;
@@ -17,20 +18,12 @@ public class Booking {
         this.bookingID = bookingID;
     }
 
-    public int getAdults() {
-        return adults;
+    public int getNumberOfGuests() {
+        return numberOfGuests;
     }
 
-    public void setAdults(int adults) {
-        this.adults = adults;
-    }
-
-    public int getChildren() {
-        return children;
-    }
-
-    public void setChildren(int children) {
-        this.children = children;
+    public void setNumberOfGuests(int numberOfGuests) {
+        this.numberOfGuests = numberOfGuests;
     }
 
     public String getStartDate() {
