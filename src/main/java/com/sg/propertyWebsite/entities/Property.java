@@ -64,4 +64,48 @@ public class Property {
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Property property)) return false;
+
+        if (getPropertyID() != property.getPropertyID()) return false;
+        if (Double.compare(property.getRating(), getRating()) != 0) return false;
+        if (Double.compare(property.getPerNightCost(), getPerNightCost()) != 0) return false;
+        if (getAmmenitiesID() != property.getAmmenitiesID()) return false;
+        if (getCapacity() != property.getCapacity()) return false;
+        if (getPropertyName() != null ? !getPropertyName().equals(property.getPropertyName()) : property.getPropertyName() != null)
+            return false;
+        return getPropertyType() != null ? getPropertyType().equals(property.getPropertyType()) : property.getPropertyType() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = getPropertyID();
+        result = 31 * result + (getPropertyName() != null ? getPropertyName().hashCode() : 0);
+        temp = Double.doubleToLongBits(getRating());
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(getPerNightCost());
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + getAmmenitiesID();
+        result = 31 * result + (getPropertyType() != null ? getPropertyType().hashCode() : 0);
+        result = 31 * result + getCapacity();
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Property{" +
+                "propertyID=" + propertyID +
+                ", propertyName='" + propertyName + '\'' +
+                ", rating=" + rating +
+                ", perNightCost=" + perNightCost +
+                ", ammenitiesID=" + ammenitiesID +
+                ", propertyType='" + propertyType + '\'' +
+                ", capacity=" + capacity +
+                '}';
+    }
 }
