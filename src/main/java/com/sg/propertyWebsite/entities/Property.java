@@ -2,11 +2,12 @@ package com.sg.propertyWebsite.entities;
 
 public class Property {
     private int propertyID;
-    private int rooms;
-    private int beds;
-    private int ammenitiesID;
+    private String propertyName;
+    private double rating;
     private double perNightCost;
-    private String description;
+    private int ammenitiesID;
+    private String propertyType;
+    private int capacity;
 
     public int getPropertyID() {
         return propertyID;
@@ -16,28 +17,20 @@ public class Property {
         this.propertyID = propertyID;
     }
 
-    public int getRooms() {
-        return rooms;
+    public String getPropertyName() {
+        return propertyName;
     }
 
-    public void setRooms(int rooms) {
-        this.rooms = rooms;
+    public void setPropertyName(String propertyName) {
+        this.propertyName = propertyName;
     }
 
-    public int getBeds() {
-        return beds;
+    public double getRating() {
+        return rating;
     }
 
-    public void setBeds(int beds) {
-        this.beds = beds;
-    }
-
-    public int getAmmenitiesID() {
-        return ammenitiesID;
-    }
-
-    public void setAmmenitiesID(int ammenitiesID) {
-        this.ammenitiesID = ammenitiesID;
+    public void setRating(double rating) {
+        this.rating = rating;
     }
 
     public double getPerNightCost() {
@@ -48,11 +41,27 @@ public class Property {
         this.perNightCost = perNightCost;
     }
 
-    public String getDescription() {
-        return description;
+    public int getAmmenitiesID() {
+        return ammenitiesID;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setAmmenitiesID(int ammenitiesID) {
+        this.ammenitiesID = ammenitiesID;
+    }
+
+    public String getPropertyType() {
+        return propertyType;
+    }
+
+    public void setPropertyType(String propertyType) {
+        this.propertyType = propertyType;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 }
