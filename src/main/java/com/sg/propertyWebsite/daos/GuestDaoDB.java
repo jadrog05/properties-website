@@ -69,7 +69,6 @@ public class GuestDaoDB implements GuestDao{
                     guest.getPostcode(),
                     guest.getPhoneNumber(),
                     String.valueOf(guest.getGuestID()));
-
         } catch (DataAccessException e){
             System.out.println("Error updating Guest");
         }
@@ -86,7 +85,6 @@ public class GuestDaoDB implements GuestDao{
     }
 
     public static final class GuestMapper implements RowMapper<Guest> {
-
         @Override
         public Guest mapRow(ResultSet rs, int index) throws SQLException {
             Guest guest = new Guest();

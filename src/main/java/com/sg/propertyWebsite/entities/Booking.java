@@ -1,12 +1,14 @@
 package com.sg.propertyWebsite.entities;
 
+import java.util.Date;
+
 public class Booking {
     private int bookingID;
-
+    private int propertiesID;
     private int guestID;
     private int numberOfGuests;
-    private String startDate;
-    private String endDate;
+    private Date startDate;
+    private Date endDate;
     private double totalCost;
 
 
@@ -18,6 +20,22 @@ public class Booking {
         this.bookingID = bookingID;
     }
 
+    public int getPropertiesID() {
+        return propertiesID;
+    }
+
+    public void setPropertiesID(int propertiesID) {
+        this.propertiesID = propertiesID;
+    }
+
+    public int getGuestID() {
+        return guestID;
+    }
+
+    public void setGuestID(int guestID) {
+        this.guestID = guestID;
+    }
+
     public int getNumberOfGuests() {
         return numberOfGuests;
     }
@@ -26,19 +44,19 @@ public class Booking {
         this.numberOfGuests = numberOfGuests;
     }
 
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public String getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 
@@ -50,11 +68,33 @@ public class Booking {
         this.totalCost = totalCost;
     }
 
-    public int getGuestID() {
-        return guestID;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Booking booking)) return false;
+
+        if (getBookingID() != booking.getBookingID()) return false;
+        if (getPropertiesID() != booking.getPropertiesID()) return false;
+        if (getGuestID() != booking.getGuestID()) return false;
+        if (getNumberOfGuests() != booking.getNumberOfGuests()) return false;
+        if (Double.compare(booking.getTotalCost(), getTotalCost()) != 0) return false;
+        if (getStartDate() != null ? !getStartDate().equals(booking.getStartDate()) : booking.getStartDate() != null)
+            return false;
+        return getEndDate() != null ? getEndDate().equals(booking.getEndDate()) : booking.getEndDate() == null;
     }
 
-    public void setGuestID(int guestID) {
-        this.guestID = guestID;
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = getBookingID();
+        result = 31 * result + getPropertiesID();
+        result = 31 * result + getGuestID();
+        result = 31 * result + getNumberOfGuests();
+        result = 31 * result + (getStartDate() != null ? getStartDate().hashCode() : 0);
+        result = 31 * result + (getEndDate() != null ? getEndDate().hashCode() : 0);
+        temp = Double.doubleToLongBits(getTotalCost());
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
     }
 }
