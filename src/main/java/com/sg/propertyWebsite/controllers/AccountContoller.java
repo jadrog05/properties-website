@@ -10,10 +10,12 @@ public class AccountContoller {
 
     private AccountDao accountsDao;
 
-    @GetMapping("signin")
-    public void getSignin(Model model){
+    @GetMapping("index")
+    public void getIndex(Model model) {
+    }
 
-        System.out.println("James' test commit");
+    @GetMapping("signin")
+    public void getSignin(Model model) {
     }
 
 }
