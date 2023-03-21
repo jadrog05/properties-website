@@ -125,12 +125,12 @@ public class PropertyDaoDB implements PropertyDao{
         @Override
         public Amenity mapRow(ResultSet rs, int index) throws SQLException {
             Amenity a = new Amenity();
-            a.setFridge(rs.getString("fridge"));
-            a.setHotTub(rs.getString("hotTub"));
-            a.setOven(rs.getString("oven"));
-            a.setMicrowave(rs.getString("microwave"));
-            a.setTv(rs.getString("tv"));
-            a.setSwimmingPool(rs.getString("swimmingPool"));
+            a.setFridge(rs.getBoolean("fridge"));
+            a.setHotTub(rs.getBoolean("hotTub"));
+            a.setOven(rs.getBoolean("oven"));
+            a.setMicrowave(rs.getBoolean("microwave"));
+            a.setTv(rs.getBoolean("tv"));
+            a.setSwimmingPool(rs.getBoolean("swimmingPool"));
             return a;
         }
     }

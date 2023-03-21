@@ -5,59 +5,59 @@ import java.util.List;
 
 public class Amenity {
     private int ammenitiesID;
-    private String tv;
-    private String hotTub;
-    private String oven;
-    private String microwave;
-    private String fridge;
-    private String swimmingPool;
+    private boolean tv;
+    private boolean hotTub;
+    private boolean oven;
+    private boolean microwave;
+    private boolean fridge;
+    private boolean swimmingPool;
 
     public void setAmmenitiesID(int ammenitiesID) {
         this.ammenitiesID = ammenitiesID;
     }
 
-    public void setTv(String tv) {
+    public void setTv(boolean tv) {
         this.tv = tv;
     }
 
-    public void setHotTub(String hotTub) {
+    public void setHotTub(boolean hotTub) {
         this.hotTub = hotTub;
     }
 
-    public void setOven(String oven) {
+    public void setOven(boolean oven) {
         this.oven = oven;
     }
 
-    public void setMicrowave(String microwave) {
+    public void setMicrowave(boolean microwave) {
         this.microwave = microwave;
     }
 
-    public void setFridge(String fridge) {
+    public void setFridge(boolean fridge) {
         this.fridge = fridge;
     }
 
-    public void setSwimmingPool(String swimmingPool) {
+    public void setSwimmingPool(boolean swimmingPool) {
         this.swimmingPool = swimmingPool;
     }
 
     public List<String> getAmmenities(){
         List<String> amenitiesList = new ArrayList<>();
-        if(this.tv != null){
+        if(this.tv){
             amenitiesList.add("TV");
         }
-        if(this.fridge!= null){
+        if(this.fridge){
             amenitiesList.add("Fridge");
         }
-        if(this.hotTub!= null){
+        if(this.hotTub){
             amenitiesList.add("Hot Tub");
         }
-        if(this.oven!= null){
+        if(this.oven){
             amenitiesList.add("Oven");
         }
-        if(this.microwave!= null){
+        if(this.microwave){
             amenitiesList.add("Microwave");
         }
-        if(this.swimmingPool!= null){
+        if(this.swimmingPool){
             amenitiesList.add("Swimming Pool");
         }
         return amenitiesList;
