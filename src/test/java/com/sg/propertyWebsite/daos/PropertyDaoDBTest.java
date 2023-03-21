@@ -63,7 +63,7 @@ class PropertyDaoDBTest {
         p2.setPropertyName("Test Name 2");
         p2.setRating(3.14);
         p2.setPerNightCost(11.99);
-        p2.setAmmenitiesID(2);
+        p2.setAmmenitiesID(1);
         p2.setCapacity(34);
         p2.setPropertyType("Teepee");
 
