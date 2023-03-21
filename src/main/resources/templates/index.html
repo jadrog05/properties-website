@@ -31,25 +31,49 @@
     <a href="signin" class="btn btn-outline-primary btn-lg">Sign In</a>
 </div>
 
-<!-- Add a booking -->
+<!-- Serach for a booking -->
 <div class="col-4">
     <h3>Search Property's</h3>
-    <form action="addBooking" method="POST" class="form">
+    <form action="searchProperty" method="GET" class="form">
         <div class="form-group">
             <label class="col-8" for="startDate">Start date</label>
-            <input class="col-4 form-control" type="text" id="startDate"/>
+            <input class="col-4 form-control" type="text" name="startDate" id="startDate"/>
         </div>
         <div class="form-group">
             <label class="col-8" for="endDate">End date</label>
-            <input class="col-4 form-control" type="text" id="endDate"/>
+            <input class="col-4 form-control" type="text" name="startDate" id="endDate"/>
         </div>
         <div class="form-group">
             <label class="col-12" for="numberOfGuests">Number of Guests</label>
-            <input class="col-4 form-control" type="text" id="numberOfGuests"/>
+            <input class="col-4 form-control" type="text" name="numberOfGuests" id="numberOfGuests"/>
         </div>
 
         <button type="submit" class="btn btn-primary">Search</button>
     </form>
+</div>
+
+<!-- Temp display orders -->
+
+<div class="row m-4 border border-dark">
+    <div class="col text-center m-3">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Property ID</th>
+                <th>Property Name</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="property : ${propertyList}">
+                <td th:text="${property.propertyID}">Property ID</td>
+                <td th:text="${teacher.propertyName}">Property Name</td>
+            </tr>
+
+
+            </tbody>
+        </table>
+    </div>
 </div>
 
 
