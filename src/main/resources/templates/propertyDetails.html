@@ -40,8 +40,17 @@
                 </tbody>
             </table>
         </div>
+        <div class="col m-3 background-dark">
+            <div class="grid">
+                <tbody>
+                <div class="row">Capacity: <span th:text="${property.capacity}"></span></div>
+                <div class="row">Property Type: <span th:text="${property.propertyType}"></span></div>
+                <div class="row">Rating: <span th:text="${property.rating}"></span> / 5</div>
+                <div class="row"><a class="btn btn-outline-primary btn-lg"  href="#" th:href="@{/bookProperty(id=${property.propertyID})}"><span>Book for £<span th:text="${property.perNightCost}"></span> per night!</span></a></div>
+                </tbody>
+            </div>
+        </div>
     </div>
-
 </div>
 
 
