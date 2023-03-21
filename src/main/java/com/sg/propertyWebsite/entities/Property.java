@@ -30,7 +30,8 @@ public class Property {
     }
 
     public void setRating(double rating) {
-        this.rating = rating;
+        int scale = (int) Math.pow(10, 1);
+        this.rating = (double) Math.round(rating * scale) / scale;
     }
 
     public double getPerNightCost() {
