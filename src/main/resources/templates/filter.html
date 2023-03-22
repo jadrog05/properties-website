@@ -17,34 +17,19 @@
 
 <body>
 <!-- Main Body of Page -->
-<!-- Title -->
 <div class="container">
     <div class="row m-4">
         <div class="col text-center">
-            <img src="../static/images/logo-placeholder.jpg" alt="Website logo" style="float:left;width:80px;"
-                 th:src="@{images/logo-placeholder.jpg}"/>
-            <h1>J&Js Getaways</h1>
+            <h1>Filter settings</h1>
         </div>
     </div>
 </div>
 
-<div class="col text-right mt-3" style="position:absolute;top:10px;right:10px;">
-    <a href="signin" class="btn btn-outline-primary btn-lg">Sign In</a>
-</div>
-
-<!-- Serach for a booking -->
-<div class="col-4">
-    <h3>Search Property's</h3>
-    <form action="properties" method="GET" class="form">
-        <div class="col-lg-3" th:object="${property}">
-
-            <label for="propertyLocation">Select a location:</label>
-            <select class="form-control" id="propertyLocation" name="propertyLocation">
-                <option value="text">-</option>
-                <option th:each="property : ${properties}"
-                        th:value="${property}"
-                        th:text="${property}"></option>
-            </select>
+<div style="display: flex; justify-content: center; align-items: center; height: 20vh;">
+    <div class="col-2" style="text-align: center;">
+        <form action="properties" method="GET" class="form">
+            <!-- Need to pass in property location for when we go back to the property page -->
+            <input type="hidden" name="propertyLocation" th:value="${property.propertyLocation}"/>
 
             <label for="numberOfGuests">Number of guests:</label>
             <select class="form-control" id="numberOfGuests" name="numberOfGuests">
@@ -59,11 +44,23 @@
                 <option value="8">8</option>
             </select>
 
-        </div>
-        <button type="submit" class="btn btn-primary">Search</button>
-    </form>
-    <a href="allProperties" class="btn btn-primary">Show all properties!</a>
+            <!-- Hard coding because we rent out certain properties & lazy -->
+            <label for="propertyType">Property Type:</label>
+            <select class="form-control" id="propertyType" name="propertyType">
+                <option value="0">-</option>
+                <option value="hotel">Hotel</option>
+                <option value="apartment">Apartment</option>
+                <option value="Hostel">Hostel</option>
+                <option value="House">House</option>
+            </select>
+
+            <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Apply</button>
+
+        </form>
+    </div>
 </div>
+
+
 <!-- End main body -->
 
 <!-- Optional JavaScript -->

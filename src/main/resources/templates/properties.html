@@ -16,14 +16,25 @@
 <div class="container">
     <div class="row m-4">
         <div class="col text-center border border-dark">
-
-            <!-- TODO make this display the location -->
-            <h1>Properties in: <span th:text="${propertyLocation}"></span></h1>
+            <h1>Displaying <span th:text="${numberOfProperties}"></span> of <span
+                    th:text="${totalProperties}"></span> properties in
+                <span th:text="${property.propertyLocation}"></span>:</h1>
         </div>
+
     </div>
     <div class="row m-4 border border-dark">
         <div class="col text-center m-3">
-            <a href="properties" class="btn btn-outline-primary btn-lg">Filter</a>
+            <td><a href="#" th:href="@{/filter(propertyLocation=${property.propertyLocation})}"
+                   class="btn btn-outline-primary btn">Filter</a></td>
+        </div>
+        <div class="col text-center m-3">
+            <a>Currently applied filters:</a>
+            <div style="display: block;">
+                Minimum capacity: <span th:text="${numberOfGuests}"></span>
+            </div>
+            <div style="display: block;">
+                Property type: <span th:text="${propertyType}"></span>
+            </div>
         </div>
     </div>
 </div>

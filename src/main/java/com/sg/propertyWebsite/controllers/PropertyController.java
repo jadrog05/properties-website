@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -22,20 +23,28 @@ public class PropertyController {
     @Autowired
     BookingDaoDB bookingDao;
 
-// Commented this out as 'properties' is being call from the index page
-/*    @GetMapping("properties")
-    public String displayProperties(Model model){
-        List<Property> properties = propertyDao.getAllProperties();
-        model.addAttribute("properties",properties);
-        return "properties";
-    }*/
-
     @GetMapping("propertyDetails")
-    public String displayPropertyInfo(int id,Model model){
+    public String displayPropertyInfo(int id, Model model) {
         Property property = propertyDao.getPropertyByID(id);
         List<String> a = propertyDao.getAmmentiesByID(property.getAmmenitiesID());
         model.addAttribute("property", property);
         model.addAttribute("a", a);
         return "propertyDetails";
     }
+
+    @GetMapping("filter")
+    public String newFilter(Model model, String propertyLocation) {
+        List<Property> properties = propertyDao.getPropertyByLocation(propertyLocation);
+
+        // Create property object and populate with details filter will need
+        Property property = new Property();
+        if (!properties.isEmpty()) {
+            property.setPropertyLocation(properties.get(0).getPropertyLocation());
+        }
+
+        model.addAttribute("property", property);
+        return "filter";
+    }
+
+
 }
