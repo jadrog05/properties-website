@@ -1,5 +1,6 @@
 package com.sg.propertyWebsite.daos;
 
+import com.sg.propertyWebsite.entities.Amenity;
 import com.sg.propertyWebsite.entities.Guest;
 import com.sg.propertyWebsite.entities.Property;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -100,6 +101,18 @@ public class PropertyDaoDB implements PropertyDao{
 
     }
 
+    @Override
+    public List<String> getAmmentiesByID(int id) {
+        try{
+            String SELECT_AMMENITIES = "SELECT * FROM Ammenities WHERE ammenitiesID = ?;";
+            Amenity a = jdbc.queryForObject(SELECT_AMMENITIES, new PropertyDaoDB.AmmenitiesMapper(),id);
+            return a.getAmmenities();
+        }catch (DataAccessException e){
+            return null;
+        }
+    }
+
+
     public static final class PropertyMapper implements RowMapper<Property> {
 
         @Override
@@ -113,6 +126,21 @@ public class PropertyDaoDB implements PropertyDao{
             property.setPerNightCost(rs.getDouble("perNightPrice"));
             property.setPropertyType(rs.getString("propertyType"));
             return property;
+        }
+    }
+
+    public static final class AmmenitiesMapper implements RowMapper<Amenity> {
+
+        @Override
+        public Amenity mapRow(ResultSet rs, int index) throws SQLException {
+            Amenity a = new Amenity();
+            a.setFridge(rs.getBoolean("fridge"));
+            a.setHotTub(rs.getBoolean("hotTub"));
+            a.setOven(rs.getBoolean("oven"));
+            a.setMicrowave(rs.getBoolean("microwave"));
+            a.setTv(rs.getBoolean("tv"));
+            a.setSwimmingPool(rs.getBoolean("swimmingPool"));
+            return a;
         }
     }
 }

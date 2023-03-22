@@ -11,4 +11,6 @@ public interface PropertyDao {
     Property addProperty(Property property);
     void updateProperty(Property property);
     void deletePropertyByID(int id);
+
+    List<String> getAmmentiesByID(int id);
 }

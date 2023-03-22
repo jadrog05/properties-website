@@ -33,7 +33,9 @@ public class PropertyController {
     @GetMapping("propertyDetails")
     public String displayPropertyInfo(int id,Model model){
         Property property = propertyDao.getPropertyByID(id);
+        List<String> a = propertyDao.getAmmentiesByID(property.getAmmenitiesID());
         model.addAttribute("property", property);
+        model.addAttribute("a", a);
         return "propertyDetails";
     }
 }
