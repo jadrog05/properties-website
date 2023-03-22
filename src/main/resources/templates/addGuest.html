@@ -18,13 +18,59 @@
     <div class="col text-center border border-dark">
 
       <!-- TODO make this display the location -->
-      <h1>Properties in: <span th:text="${propertyLocation}"></span></h1>
+      <h1>Add Guest</h1>
     </div>
   </div>
-  <div class="row m-4 border border-dark">
-    <div class="col text-center m-3">
-      <a href="properties" class="btn btn-outline-primary btn-lg">Filter</a>
-    </div>
+</div>
+
+<div class="row m-4 border border-dark" name="add-guest-form">
+  <div class="col-7 text-center m-3 border border-dark">
+    <form action="confirmGuest" method="POST" style="padding: 20px" class="form">
+      <div class="form-group row" >
+        <label for="firstName" class="row-3 row-form-label">
+          First Name </label>
+        <div class="col-9">
+          <input type="text" name="firstName"
+                 id="firstName" class="form-control"/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="lastName" class="row-3 row-form-label">
+          Last Name </label>
+        <div class="col-9 text right">
+          <input type="text" name="lastName"
+                 id="lastName" class="form-control"/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="email" class="row-3 row-form-label">
+          Email      </label>
+        <div class="col-9">
+          <input type="text" name="email"
+                 id="email" class="form-control"/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="phoneNumber" class="row-3 row-form-label">
+          Phone Number</label>
+        <div class="col-9">
+          <input type="text" name="phoneNumber"
+                 id="phoneNumber" class="form-control"/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="postcode" class="row-3 row-form-label">
+          Postcode   </label>
+        <div class="col-9">
+          <input type="text" name="postcode"
+                 id="postcode" class="form-control"/>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Confirm</button>
+    </form>
+  </div>
+  <div class="col-7 text-center m-3">
+
   </div>
 </div>
 
