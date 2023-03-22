@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <title>Course Manager</title>
+    <title>J&Js Getaways</title>
 </head>
 <body>
 <!-- Main Body of Page -->
@@ -33,6 +33,7 @@
             <tr>
                 <th>Image</th>
                 <th>Property Name</th>
+                <th>Capacity</th>
                 <th>Details</th>
                 <th>Book</th>
                 <th>Rating</th>
@@ -42,6 +43,7 @@
             <tr th:each="property : ${properties}">
                 <td>To be replaced with images when we have them</td>
                 <td th:text='${property.propertyName}'>Property Name</td>
+                <td th:text="${property.capacity}">Capacity</td>
                 <td><a href="#" th:href="@{/propertyDetails(id=${property.propertyID})}">Details</a></td>
                 <td><a href="#" th:href="@{/bookProperty(id=${property.propertyID})}">Book</a></td>
                 <td th:text="${property.rating}">Rating</td>
@@ -51,7 +53,6 @@
     </div>
 </div>
 
-<!-- This breaks things, I think because it includes capacity
 <div class="grid-container" th:each="property : ${properties}">
     <div class="propertyCard">
         <div class="image">
@@ -63,7 +64,6 @@
         </div>
     </div>
 </div>
--->
 <!-- End main body -->
 
 <!-- Optional JavaScript -->

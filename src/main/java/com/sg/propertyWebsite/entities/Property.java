@@ -6,6 +6,7 @@ public class Property {
     private int propertyID;
     private String propertyLocation;
     private String propertyName;
+    private int capacity;
     private double rating;
     private double perNightCost;
     private int ammenitiesID;
@@ -21,6 +22,14 @@ public class Property {
 
     public String getPropertyLocation() {
         return propertyLocation;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 
     public void setPropertyLocation(String propertyLocation) {
@@ -74,17 +83,20 @@ public class Property {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Property property = (Property) o;
-        return propertyID == property.propertyID && Double.compare(property.rating, rating) == 0
+        return propertyID == property.propertyID
+                && Double.compare(property.capacity, capacity) == 0
+                && Double.compare(property.rating, rating) == 0
                 && Double.compare(property.perNightCost, perNightCost) == 0
                 && ammenitiesID == property.ammenitiesID
-                && propertyLocation.equals(property.propertyLocation)
-                && propertyName.equals(property.propertyName)
-                && propertyType.equals(property.propertyType);
+                && Objects.equals(propertyLocation, property.propertyLocation)
+                && Objects.equals(propertyName, property.propertyName)
+                && Objects.equals(propertyType, property.propertyType);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(propertyID, propertyLocation, propertyName, rating, perNightCost, ammenitiesID, propertyType);
+        return Objects.hash(propertyID, propertyLocation, propertyName, capacity, rating, perNightCost,
+                ammenitiesID, propertyType);
     }
 
     @Override
@@ -93,6 +105,7 @@ public class Property {
                 "propertyID=" + propertyID +
                 ", propertyLocation='" + propertyLocation + '\'' +
                 ", propertyName='" + propertyName + '\'' +
+                ", capacity=" + capacity +
                 ", rating=" + rating +
                 ", perNightCost=" + perNightCost +
                 ", ammenitiesID=" + ammenitiesID +
