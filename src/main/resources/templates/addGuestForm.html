@@ -27,7 +27,8 @@
 <div class="row m-4 border border-dark" name="add-guest-form">
     <div class="col-7 text-center m-3 border border-dark">
         <form action="#" th:action="@{/newGuest}" method="POST" th:object="${g}" style="padding: 20px" class="form">
-            <div class="form-group row" >
+            <input type="hidden" name="propertyID" th:value="${p.propertyID}"/>
+            <div class="form-group row">
                 <label class="row-3 row-form-label">First Name </label>
                 <div class="col-9">
                     <input type="text" th:field="*{firstName}"/>
@@ -52,7 +53,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label class="row-3 row-form-label">Postcode   </label>
+                <label class="row-3 row-form-label">Postcode </label>
                 <div class="col-9">
                     <input type="text" th:field="*{postcode}"/>
                 </div>
@@ -62,12 +63,7 @@
     </div>
     <div class="col-7 text-center m-3">
     </div>
-    </div>
 </div>
-
-<!-- Attempt to make it a grid instead of rows -->
-
-
 <!-- End main body -->
 
 <!-- Optional JavaScript -->

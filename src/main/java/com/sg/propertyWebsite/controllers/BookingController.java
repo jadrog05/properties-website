@@ -23,24 +23,24 @@ public class BookingController {
     @Autowired
     PropertyDaoDB propertyDao;
 
-
     @GetMapping("/newGuest")
-    public String newGuest(Model model, int propertyID){
+    public String newGuest(Model model, int propertyID) {
         Guest guest = new Guest();
         Property p = propertyDao.getPropertyByID(propertyID);
         model.addAttribute("g", guest);
         model.addAttribute("p", p);
 
-    return "addGuestForm";
+        return "addGuestForm";
     }
-
-
 
     @PostMapping("/newGuest")
-    public String confirmBooking(@ModelAttribute("g") Guest g, @ModelAttribute("p") Property p){
-            g = guestDao.addGuest(g);
-        System.out.println(p.toString());
-    return "confirmBooking";
+    public String confirmBooking(Model model, @ModelAttribute("g") Guest g, int propertyID) {
+        g = guestDao.addGuest(g);
+        Property p = propertyDao.getPropertyByID(propertyID);  // Just want to return propertyID as int
+
+        model.addAttribute("p", p);  // Add to model to be used on confirmBooking.html
+        return "confirmBooking";
     }
+
 
 }
