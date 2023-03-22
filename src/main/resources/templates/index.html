@@ -36,9 +36,13 @@
 <div class="col-4">
     <h3>Search Property's</h3>
     <form action="properties" method="GET" class="form">
-        <div class="form-group">
-            <label class="col-8" for="propertyLocation">Enter a property location</label>
-            <input class="col-4 form-control" type="text" name="propertyLocation" id="propertyLocation"/>
+        <div class="col-lg-3" th:object="${property}">
+            <select class="form-control" id="propertyLocation" name="propertyLocation">
+                <option value="text">Select a loaction</option>
+                <option th:each="property : ${properties}"
+                        th:value="${property.propertyLocation}"
+                        th:text="${property.propertyLocation}"></option>
+            </select>
         </div>
         <button type="submit" class="btn btn-primary">Search</button>
     </form>

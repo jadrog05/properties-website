@@ -23,8 +23,12 @@ public class HomeContoller {
     @Autowired
     PropertyDao propertyDao;
 
-    @GetMapping("index")
+    @GetMapping("/index")
     public void getIndex(Model model) {
+        // Need to get a list of all properties to display locations in drop-down
+        // TODO: IGNORE DUPLICATES
+        List<Property> propertyList = propertyDao.getAllProperties();
+        model.addAttribute("properties", propertyList);
     }
 
     @GetMapping("signin")
