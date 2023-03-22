@@ -16,34 +16,35 @@ import java.util.Date;
 import java.util.List;
 
 @Repository
-public class BookingDaoDB implements BookingDao{
+public class BookingDaoDB implements BookingDao {
     @Autowired
     JdbcTemplate jdbc;
+
     @Override
     public Booking getBookingByID(int id) {
-        try{
+        try {
             String SELECT_BOOKING_BY_ID = "SELECT * FROM Bookings WHERE bookingID = ?;";
             Booking booking = jdbc.queryForObject(SELECT_BOOKING_BY_ID, new BookingDaoDB.BookingMapper(), id);
             return booking;
-        } catch (DataAccessException e){
+        } catch (DataAccessException e) {
             return null;
         }
     }
 
     @Override
     public List<Booking> getAllBooking() {
-        try{
+        try {
             String SELECT_ALL_BOOKINGS = "SELECT * FROM Bookings;";
             List<Booking> bookings = jdbc.query(SELECT_ALL_BOOKINGS, new BookingMapper());
             return bookings;
-        } catch (DataAccessException e){
+        } catch (DataAccessException e) {
             return null;
         }
     }
 
     @Override
     public Booking addBooking(Booking booking) {
-        try{
+        try {
             String INSERT_BOOKING = "INSERT INTO Bookings(propertiesID, guestID, numberOfGuests, startDate, endDate, totalCost)" +
                     "VALUES (?,?,?,?,?,?);";
             jdbc.update(INSERT_BOOKING,
@@ -56,14 +57,14 @@ public class BookingDaoDB implements BookingDao{
             int newId = jdbc.queryForObject("SELECT LAST_INSERT_ID()", Integer.class);
             booking.setBookingID(newId);
             return booking;
-        }catch (DataAccessException e){
+        } catch (DataAccessException e) {
             return null;
         }
     }
 
     @Override
     public void updateBooking(Booking booking) {
-        try{
+        try {
             String UPDATE_BOOKING = "UPDATE Bookings SET propertiesID = ?, guestID = ?, numberOfGuests = ?, startDate = ?, " +
                     "endDate = ?, totalCost = ? WHERE bookingID = ?;";
             jdbc.update(UPDATE_BOOKING,
@@ -74,22 +75,22 @@ public class BookingDaoDB implements BookingDao{
                     dateFormatter(booking.getEndDate()),
                     String.valueOf(booking.getTotalCost()),
                     String.valueOf(booking.getBookingID()));
-        }catch (DataAccessException e){
+        } catch (DataAccessException e) {
             System.out.println("Error updating booking");
         }
     }
 
     @Override
     public void deleteBookingByID(int id) {
-        try{
+        try {
             String DELETE_BOOKING = "DELETE FROM Bookings WHERE bookingID = ?";
             jdbc.update(DELETE_BOOKING, id);
-        } catch (DataAccessException e){
+        } catch (DataAccessException e) {
             System.out.println("Error deleting booking");
         }
     }
 
-    public static String dateFormatter(Date date){
+    public static String dateFormatter(Date date) {
         SimpleDateFormat mdyFormat = new SimpleDateFormat("yyyy-MM-dd");
         return mdyFormat.format(date);
     }

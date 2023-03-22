@@ -7,8 +7,12 @@ import java.util.List;
 public interface GuestDao {
 
     Guest getGuestByID(int id);
+
     List<Guest> getAllGuests();
+
     Guest addGuest(Guest guest);
+
     void updateGuest(Guest guest);
+
     void deleteGuestByID(int id);
 }

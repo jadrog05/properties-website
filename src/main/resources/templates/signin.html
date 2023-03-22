@@ -1,76 +1,83 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-  <title>Spring Security Example </title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Spring Security Example </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body id="image-head" class="image-head">
 <div class="container">
-  <div class="row">
-    <div class="col-md-8">
-    </div>
-    <div class="col-md-4">
-      <div id="loginbox" style="margin-top:50px;">
-        <div class="panel panel-info" >
-          <div class="panel-heading">
-            <div class="panel-title">Sign In</div>
-          </div>
-          <div style="padding-top:30px" class="panel-body" >
-            <form id="loginform" class="form-horizontal" th:action="@{/login}" method="post">
-              <div style="margin-bottom: 25px" class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="Username"></input>
-              </div>
-              <div style="margin-bottom: 25px" class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                <input id="login-password" type="password" class="form-control" name="password" placeholder="Password"></input>
-              </div>
-              <div style="margin-bottom: 15px; display: block;" class="input-group">
-                <input id="remember-me" type="checkbox" name="remember-me" value="1" /> Remember me
-                <a style="float: right" href="#">Forgot password?</a>
-              </div>
-              <button id="btn-submit" type="button" class="btn btn-block btn-success">Login</button>
-            </form>
-          </div>
+    <div class="row">
+        <div class="col-md-8">
         </div>
-      </div>
+        <div class="col-md-4">
+            <div id="loginbox" style="margin-top:50px;">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title">Sign In</div>
+                    </div>
+                    <div style="padding-top:30px" class="panel-body">
+                        <form id="loginform" class="form-horizontal" th:action="@{/login}" method="post">
+                            <div style="margin-bottom: 25px" class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input id="login-username" type="text" class="form-control" name="username" value=""
+                                       placeholder="Username"></input>
+                            </div>
+                            <div style="margin-bottom: 25px" class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                <input id="login-password" type="password" class="form-control" name="password"
+                                       placeholder="Password"></input>
+                            </div>
+                            <div style="margin-bottom: 15px; display: block;" class="input-group">
+                                <input id="remember-me" type="checkbox" name="remember-me" value="1"/> Remember me
+                                <a style="float: right" href="#">Forgot password?</a>
+                            </div>
+                            <button id="btn-submit" type="button" class="btn btn-block btn-success">Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
-      <div id="signupbox">
-        <div class="panel panel-info">
-          <div class="panel-heading">
-            <div class="panel-title">Sign Up</div>
-          </div>
-          <div class="panel-body" >
-            <form id="signupform" class="form-horizontal" role="form">
-              <div id="signupalert" style="display:none" class="alert alert-danger">
-                <p>Error:</p>
-                <span></span>
-              </div>
-              <div style="margin-bottom: 25px" class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input type="text" class="form-control" name="firstname" placeholder="First Name"></input>
-              </div>
-              <div style="margin-bottom: 25px" class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input type="text" class="form-control" name="lastname" placeholder="Last Name"></input>
-              </div>
-              <div style="margin-bottom: 25px" class="input-group">
-                <span class="input-group-addon">@</span>
-                <input type="text" class="form-control" name="email" placeholder="Email Address"></input>
-              </div>
-              <div style="margin-bottom: 25px" class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                <input type="password" class="form-control" name="password" placeholder="Password"></input>
-              </div>
-              <button id="btn-signup" type="button" class="btn btn-block btn-info"><i class="icon-hand-right"></i> &nbsp; Sign Up</button>
-            </form>
-          </div>
+            <div id="signupbox">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title">Sign Up</div>
+                    </div>
+                    <div class="panel-body">
+                        <form id="signupform" class="form-horizontal" role="form">
+                            <div id="signupalert" style="display:none" class="alert alert-danger">
+                                <p>Error:</p>
+                                <span></span>
+                            </div>
+                            <div style="margin-bottom: 25px" class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input type="text" class="form-control" name="firstname"
+                                       placeholder="First Name"></input>
+                            </div>
+                            <div style="margin-bottom: 25px" class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input type="text" class="form-control" name="lastname" placeholder="Last Name"></input>
+                            </div>
+                            <div style="margin-bottom: 25px" class="input-group">
+                                <span class="input-group-addon">@</span>
+                                <input type="text" class="form-control" name="email"
+                                       placeholder="Email Address"></input>
+                            </div>
+                            <div style="margin-bottom: 25px" class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                <input type="password" class="form-control" name="password"
+                                       placeholder="Password"></input>
+                            </div>
+                            <button id="btn-signup" type="button" class="btn btn-block btn-info"><i
+                                    class="icon-hand-right"></i> &nbsp; Sign Up
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 
 </body>

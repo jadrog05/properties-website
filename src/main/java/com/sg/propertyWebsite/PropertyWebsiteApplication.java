@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class PropertyWebsiteApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(PropertyWebsiteApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(PropertyWebsiteApplication.class, args);
+    }
 
 }

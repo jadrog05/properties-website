@@ -15,38 +15,39 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Repository
-public class PropertyDaoDB implements PropertyDao{
+public class PropertyDaoDB implements PropertyDao {
     @Autowired
     JdbcTemplate jdbc;
+
     @Override
     public Property getPropertyByID(int id) {
-        try{
+        try {
             String SELECT_PROPERTY_BY_ID = "SELECT * FROM Properties WHERE propertiesID = ?";
             Property property = jdbc.queryForObject(SELECT_PROPERTY_BY_ID, new PropertyDaoDB.PropertyMapper(), id);
             return property;
-        } catch (DataAccessException e){
+        } catch (DataAccessException e) {
             return null;
         }
     }
 
     @Override
     public List<Property> getPropertyByLocation(String propertyLocation) {
-        try{
+        try {
             String SELECT_PROPERTY_BY_LOCATION = "SELECT * FROM Properties WHERE propertyLocation = ?";
             List<Property> properties = jdbc.query(SELECT_PROPERTY_BY_LOCATION, new PropertyDaoDB.PropertyMapper(), propertyLocation);
             return properties;
-        } catch (DataAccessException e){
+        } catch (DataAccessException e) {
             return null;
         }
     }
 
     @Override
     public List<Property> getAllProperties() {
-        try{
+        try {
             String SELECT_ALL_PROPERTIES = "SELECT * FROM Properties";
             List<Property> properties = jdbc.query(SELECT_ALL_PROPERTIES, new PropertyDaoDB.PropertyMapper());
             return properties;
-        } catch (DataAccessException e){
+        } catch (DataAccessException e) {
             return null;
         }
     }
@@ -84,7 +85,7 @@ public class PropertyDaoDB implements PropertyDao{
                     property.getPropertyType(),
                     String.valueOf(property.getPropertyID()));
 
-        }catch(DataAccessException e) {
+        } catch (DataAccessException e) {
             System.out.println("Error updating properties");
         }
 
@@ -103,11 +104,11 @@ public class PropertyDaoDB implements PropertyDao{
 
     @Override
     public List<String> getAmmentiesByID(int id) {
-        try{
+        try {
             String SELECT_AMMENITIES = "SELECT * FROM Ammenities WHERE ammenitiesID = ?;";
-            Amenity a = jdbc.queryForObject(SELECT_AMMENITIES, new PropertyDaoDB.AmmenitiesMapper(),id);
+            Amenity a = jdbc.queryForObject(SELECT_AMMENITIES, new PropertyDaoDB.AmmenitiesMapper(), id);
             return a.getAmmenities();
-        }catch (DataAccessException e){
+        } catch (DataAccessException e) {
             return null;
         }
     }

@@ -22,7 +22,7 @@ public class PropertyController {
     @Autowired
     BookingDaoDB bookingDao;
 
-
+// Commented this out as 'properties' is being call from the index page
 /*    @GetMapping("properties")
     public String displayProperties(Model model){
         List<Property> properties = propertyDao.getAllProperties();

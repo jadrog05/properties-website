@@ -13,27 +13,28 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Repository
-public class GuestDaoDB implements GuestDao{
+public class GuestDaoDB implements GuestDao {
     @Autowired
     private JdbcTemplate jdbc;
+
     @Override
     public Guest getGuestByID(int id) {
-        try{
+        try {
             String SELECT_GUEST_BY_ID = "SELECT * FROM Guests WHERE guestID = ?;";
             Guest guest = jdbc.queryForObject(SELECT_GUEST_BY_ID, new GuestMapper(), id);
             return guest;
-        } catch (DataAccessException e){
+        } catch (DataAccessException e) {
             return null;
         }
     }
 
     @Override
     public List<Guest> getAllGuests() {
-        try{
+        try {
             String SELECT_ALL_GUESTS = "SELECT * FROM Guests;";
             List<Guest> guests = jdbc.query(SELECT_ALL_GUESTS, new GuestMapper());
             return guests;
-        } catch (DataAccessException e){
+        } catch (DataAccessException e) {
             return null;
         }
     }
@@ -41,7 +42,7 @@ public class GuestDaoDB implements GuestDao{
     @Override
     @Transactional
     public Guest addGuest(Guest guest) {
-        try{
+        try {
             String INSERT_GUEST = "INSERT INTO Guests(firstName, lastName, email, postcode, phoneNumber) VALUES(?,?,?,?,?);";
             jdbc.update(INSERT_GUEST,
                     guest.getFirstName(),
@@ -59,7 +60,7 @@ public class GuestDaoDB implements GuestDao{
 
     @Override
     public void updateGuest(Guest guest) {
-        try{
+        try {
             String UPDATE_GUEST = "UPDATE Guests SET firstName = ?, lastName = ?, email = ?, postcode = ?, phoneNumber = ?"
                     + "WHERE guestID = ?;";
             jdbc.update(UPDATE_GUEST,
@@ -69,17 +70,17 @@ public class GuestDaoDB implements GuestDao{
                     guest.getPostcode(),
                     guest.getPhoneNumber(),
                     String.valueOf(guest.getGuestID()));
-        } catch (DataAccessException e){
+        } catch (DataAccessException e) {
             System.out.println("Error updating Guest");
         }
     }
 
     @Override
     public void deleteGuestByID(int id) {
-        try{
+        try {
             String DELETE_GUEST = "DELETE FROM Guests WHERE guestID = ?;";
             jdbc.update(DELETE_GUEST, id);
-        } catch (DataAccessException e){
+        } catch (DataAccessException e) {
             System.out.println("Error deleting guest");
         }
     }
