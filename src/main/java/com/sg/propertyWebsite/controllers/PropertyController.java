@@ -46,14 +46,5 @@ public class PropertyController {
         return "filter";
     }
 
-    @PostMapping("propertiesWithFilter")
-    public String getFilterDetails(Model mode, int id, int numberOfGuests) {
-
-
-
-
-        return "propertiesWithFilter";
-    }
-
 
 }
