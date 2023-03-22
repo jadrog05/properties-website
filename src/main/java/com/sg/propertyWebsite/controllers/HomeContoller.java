@@ -35,6 +35,14 @@ public class HomeContoller {
     public String searchProperty(Model model, String propertyLocation) {
         List<Property> propertyList = propertyDao.getPropertyByLocation(propertyLocation);
         model.addAttribute("properties", propertyList);
+
+        // Create empty property object and set location so can be passed to HTML
+        Property property = new Property();
+        property.setPropertyLocation(propertyLocation);
+        model.addAttribute("property", property);
+
+        model.addAttribute("numberOfProperties", propertyList.size());
+
         return "properties";
     }
 
