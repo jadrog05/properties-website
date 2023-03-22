@@ -1,5 +1,9 @@
 package com.sg.propertyWebsite.entities;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Booking {
@@ -7,7 +11,9 @@ public class Booking {
     private int propertiesID;
     private int guestID;
     private int numberOfGuests;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date startDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date endDate;
     private double totalCost;
 
@@ -52,12 +58,33 @@ public class Booking {
         this.startDate = startDate;
     }
 
+    public void setStartDate(String startDate){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date parsed = null;
+        try {
+            parsed = format.parse(startDate);
+        } catch (ParseException e) {
+        }
+        this.startDate = parsed;
+    }
+
     public Date getEndDate() {
         return endDate;
     }
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public void setEndDate(String endDate){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date parsed = null;
+        try {
+            parsed = format.parse(endDate);
+        } catch (ParseException e) {
+
+        }
+        this.endDate = parsed;
     }
 
     public double getTotalCost() {
@@ -96,5 +123,18 @@ public class Booking {
         temp = Double.doubleToLongBits(getTotalCost());
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "bookingID=" + bookingID +
+                ", propertiesID=" + propertiesID +
+                ", guestID=" + guestID +
+                ", numberOfGuests=" + numberOfGuests +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", totalCost=" + totalCost +
+                '}';
     }
 }
