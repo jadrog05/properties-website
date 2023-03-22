@@ -7,8 +7,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * @Website: https://www.baeldung.com/spring-boot-custom-error-page
+ */
+
 @Controller
-public class MyErrorController implements ErrorController  {
+public class MyErrorController implements ErrorController {
 
     @RequestMapping("/error")
     public String handleError(HttpServletRequest request) {
@@ -17,10 +21,9 @@ public class MyErrorController implements ErrorController  {
         if (status != null) {
             Integer statusCode = Integer.valueOf(status.toString());
 
-            if(statusCode == HttpStatus.NOT_FOUND.value()) {
+            if (statusCode == HttpStatus.NOT_FOUND.value()) {
                 return "error-404";
-            }
-            else if(statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
+            } else if (statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
                 return "error-500";
             }
         }

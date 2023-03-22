@@ -33,13 +33,12 @@ public class AccountContoller {
     public void getSignin(Model model) {
     }
 
-    @GetMapping("searchProperty")
-    public String searchProperty(Model model) {
-        // Temp method to see if gathers from DB
-        List<Property> propertyList = propertyDao.getAllProperties();
-        model.addAttribute("propertyList", propertyList);
-        return "redirect:/properties";
+    @GetMapping("properties")
+    public String searchProperty(Model model, String propertyLocation) {
+        List<Property> propertyList = propertyDao.getPropertyByLocation(propertyLocation);
+        model.addAttribute("properties", propertyList);
+        return "properties";
     }
-    
+
 
 }

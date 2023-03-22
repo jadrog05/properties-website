@@ -23,12 +23,12 @@ public class PropertyController {
     BookingDaoDB bookingDao;
 
 
-    @GetMapping("properties")
+/*    @GetMapping("properties")
     public String displayProperties(Model model){
         List<Property> properties = propertyDao.getAllProperties();
         model.addAttribute("properties",properties);
         return "properties";
-    }
+    }*/
 
     @GetMapping("propertyDetails")
     public String displayPropertyInfo(int id,Model model){
