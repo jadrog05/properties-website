@@ -46,5 +46,12 @@ public class HomeContoller {
         return "properties";
     }
 
+    @GetMapping("allProperties")
+    public String displayAllProperties(Model model) {
+        List<Property> propertyList = propertyDao.getAllProperties();
+        model.addAttribute("properties", propertyList);
+        return "allProperties";
+    }
+
 
 }
