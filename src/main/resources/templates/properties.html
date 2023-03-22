@@ -16,7 +16,9 @@
 <div class="container">
     <div class="row m-4">
         <div class="col text-center border border-dark">
-            <h1>Properties</h1>
+
+            <!-- TODO make this display the location -->
+            <h1>Properties in: <span th:text="${propertyLocation}"></span></h1>
         </div>
     </div>
     <div class="row m-4 border border-dark">
@@ -26,44 +28,41 @@
     </div>
 </div>
 
-<div class="row m-4 border border-dark">
-    <div class="col text-center m-3">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>Image</th>
-                <th>Property Name</th>
-                <th>Capacity</th>
-                <th>Details</th>
-                <th>Book</th>
-                <th>Rating</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="property : ${properties}">
-                <td>To be replaced with images when we have them</td>
-                <td th:text='${property.propertyName}'>Property Name</td>
-                <td th:text="${property.capacity}">Capacity</td>
-                <td><a href="#" th:href="@{/propertyDetails(id=${property.propertyID})}">Details</a></td>
-                <td><a href="#" th:href="@{/bookProperty(id=${property.propertyID})}">Book</a></td>
-                <td th:text="${property.rating}">Rating</td>
-            </tr>
-            </tbody>
-        </table>
+<!-- Attempt to make it a grid instead of rows -->
+<div class="grid-container"
+     style="display: grid; grid-template-columns: repeat(2, 1fr); grid-gap: 20px; padding: 20px;">
+    <div th:each="property : ${properties}" class="propertyCard" style="border: 1px solid #ccc; padding: 20px;">
+        <div style="display: flex;">
+            <img th:src="@{images/logo-placeholder.jpg}" alt="Property image" style="float:left;width:200px;">
+            <div style="margin-left: 20px;">
+                <h2 th:text="${property.propertyName}"></h2>
+                <div>
+                    <div style="display: block;">
+                        Capacity: <span th:text="${property.capacity}"></span>
+                    </div>
+                    <div style="display: block;">
+                        Price per night: <span th:text="${property.perNightCost}"></span>
+                    </div>
+                    <div style="display: block;">
+                        Rating: <span th:text="${property.rating}"></span>
+                    </div>
+                </div>
+                <div>
+                    <table>
+                        <tr>
+                            <td><a href="#" th:href="@{/propertyDetails(id=${property.propertyID})}"
+                                   class="btn btn-outline-primary btn">More Details</a></td>
+                            <td><a href="#" th:href="@{/bookProperty(id=${property.propertyID})}"
+                                   class="btn btn-outline-primary btn">Book</a></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="grid-container" th:each="property : ${properties}">
-    <div class="propertyCard">
-        <div class="image">
-            <span>Attempt to make it a grid instead of rows</span>
-        </div>
-        <h2 th:text='${property.propertyName}'></h2>
-        <div>
-            <span>Capacity: <span th:text="${property.capacity}"></span></span>
-        </div>
-    </div>
-</div>
+
 <!-- End main body -->
 
 <!-- Optional JavaScript -->
@@ -78,6 +77,6 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 </body>
-</html>;
+</html>
 
 
