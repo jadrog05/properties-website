@@ -37,22 +37,32 @@
     <h3>Search Property's</h3>
     <form action="properties" method="GET" class="form">
         <div class="col-lg-3" th:object="${property}">
+
+            <label for="propertyLocation">Select a location:</label>
             <select class="form-control" id="propertyLocation" name="propertyLocation">
-                <option value="text">Select a loaction</option>
+                <option value="text">-</option>
                 <option th:each="property : ${properties}"
                         th:value="${property}"
                         th:text="${property}"></option>
             </select>
+
+            <label for="numberOfGuests">Number of guests:</label>
+            <select class="form-control" id="numberOfGuests" name="numberOfGuests">
+                <option value="0">-</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+            </select>
+
         </div>
         <button type="submit" class="btn btn-primary">Search</button>
     </form>
     <a href="allProperties" class="btn btn-primary">Show all properties!</a>
-</div>
-
-
-</tbody>
-</table>
-</div>
 </div>
 <!-- End main body -->
 

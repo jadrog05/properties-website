@@ -39,7 +39,7 @@ public class HomeContoller {
             }
             uniqueLocations.add(property.getPropertyLocation());
         }
-        
+
         model.addAttribute("properties", uniqueLocations);
     }
 
@@ -48,16 +48,29 @@ public class HomeContoller {
     }
 
     @GetMapping("properties")
-    public String searchProperty(Model model, String propertyLocation) {
+    public String searchProperty(Model model, String propertyLocation, int numberOfGuests) {
         List<Property> propertyList = propertyDao.getPropertyByLocation(propertyLocation);
-        model.addAttribute("properties", propertyList);
+
+        // Only add properties that meet filter to the Set
+        Set<Property> meetsFilter = new HashSet<>();
+
+        // Go through list and check if capacity <= numberOfGuests
+        for (Property property : propertyList) {
+            if (property.getCapacity() < numberOfGuests) {
+                // Not passing the filter, don't add.
+                continue;
+            }
+            meetsFilter.add(property);
+        }
+        
+        model.addAttribute("properties", meetsFilter);
 
         // Create empty property object and set location so can be passed to HTML
         Property property = new Property();
         property.setPropertyLocation(propertyLocation);
         model.addAttribute("property", property);
 
-        model.addAttribute("numberOfProperties", propertyList.size());
+        model.addAttribute("numberOfProperties", meetsFilter.size());
 
         return "properties";
     }
