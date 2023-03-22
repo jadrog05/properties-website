@@ -56,10 +56,11 @@ public class PropertyDaoDB implements PropertyDao {
     @Transactional
     public Property addProperty(Property property) {
         try {
-            String INSERT_PRODUCT = "INSERT INTO Properties(propertyName, capacity, rating, ammenitiesID, " +
-                    "perNightPrice, propertyType)" + " VALUES(?,?,?,?,?,?);";
+            String INSERT_PRODUCT = "INSERT INTO Properties(propertyName, propertyLocation, capacity, rating, ammenitiesID, " +
+                    "perNightPrice, propertyType)" + " VALUES(?,?,?,?,?,?,?);";
             jdbc.update(INSERT_PRODUCT,
                     property.getPropertyName(),
+                    property.getPropertyLocation(),
                     String.valueOf(property.getCapacity()),
                     String.valueOf(property.getRating()),
                     String.valueOf(property.getAmmenitiesID()),
@@ -76,10 +77,11 @@ public class PropertyDaoDB implements PropertyDao {
     @Override
     public void updateProperty(Property property) {
         try {
-            String UPDATE_GUEST = "UPDATE Properties SET propertyName = ?, rating = ?, perNightPrice = ?, ammenitiesID = ?," +
+            String UPDATE_GUEST = "UPDATE Properties SET propertyName = ?, propertyLocation = ?, rating = ?, perNightPrice = ?, ammenitiesID = ?," +
                     "propertyType = ?," + "WHERE propertiesID = ?;";
             jdbc.update(UPDATE_GUEST,
                     property.getPropertyName(),
+                    property.getPropertyLocation(),
                     String.valueOf(property.getRating()),
                     String.valueOf(property.getPerNightCost()),
                     String.valueOf(property.getAmmenitiesID()),
