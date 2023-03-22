@@ -36,6 +36,7 @@ class PropertyDaoDBTest {
     void testAddAndGetProperty(){
         Property p = new Property();
         p.setPropertyName("Test Name");
+        p.setPropertyLocation("Test loacation");
         p.setRating(4.67);
         p.setPerNightCost(99.99);
         p.setAmmenitiesID(1);
@@ -53,6 +54,7 @@ class PropertyDaoDBTest {
     void testGetAllProperties(){
         Property p = new Property();
         p.setPropertyName("Test Name");
+        p.setPropertyLocation("Test location");
         p.setRating(4.67);
         p.setPerNightCost(99.99);
         p.setAmmenitiesID(1);
@@ -61,6 +63,7 @@ class PropertyDaoDBTest {
 
         Property p2 = new Property();
         p2.setPropertyName("Test Name 2");
+        p2.setPropertyLocation("Test location");
         p2.setRating(3.14);
         p2.setPerNightCost(11.99);
         p2.setAmmenitiesID(1);
@@ -81,6 +84,7 @@ class PropertyDaoDBTest {
     void testUpdateProperty(){
         Property p = new Property();
         p.setPropertyName("Test Name");
+        p.setPropertyLocation("Test Location");
         p.setRating(4.67);
         p.setPerNightCost(99.99);
         p.setAmmenitiesID(1);
@@ -104,6 +108,7 @@ class PropertyDaoDBTest {
     void testDeleteProperty(){
         Property p = new Property();
         p.setPropertyName("Test Name");
+        p.setPropertyLocation("Test location");
         p.setRating(4.67);
         p.setPerNightCost(99.99);
         p.setAmmenitiesID(1);
