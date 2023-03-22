@@ -62,8 +62,9 @@ public class HomeContoller {
             }
             meetsFilter.add(property);
         }
-        
+
         model.addAttribute("properties", meetsFilter);
+        model.addAttribute("numberOfGuests", numberOfGuests);
 
         // Create empty property object and set location so can be passed to HTML
         Property property = new Property();
@@ -71,6 +72,7 @@ public class HomeContoller {
         model.addAttribute("property", property);
 
         model.addAttribute("numberOfProperties", meetsFilter.size());
+        model.addAttribute("totalProperties", propertyList.size());
 
         return "properties";
     }
