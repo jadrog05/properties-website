@@ -40,8 +40,8 @@
             <select class="form-control" id="propertyLocation" name="propertyLocation">
                 <option value="text">Select a loaction</option>
                 <option th:each="property : ${properties}"
-                        th:value="${property.propertyLocation}"
-                        th:text="${property.propertyLocation}"></option>
+                        th:value="${property}"
+                        th:text="${property}"></option>
             </select>
         </div>
         <button type="submit" class="btn btn-primary">Search</button>

@@ -9,7 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class HomeContoller {
@@ -25,10 +27,20 @@ public class HomeContoller {
 
     @GetMapping("/index")
     public void getIndex(Model model) {
-        // Need to get a list of all properties to display locations in drop-down
-        // TODO: IGNORE DUPLICATES
         List<Property> propertyList = propertyDao.getAllProperties();
-        model.addAttribute("properties", propertyList);
+
+        // Ignore duplicate locations from list
+        Set<String> uniqueLocations = new HashSet<>();
+
+        for (Property property : propertyList) {
+            if (uniqueLocations.contains(property.getPropertyLocation())) {
+                // Location is already populated in drop-down, skip.
+                continue;
+            }
+            uniqueLocations.add(property.getPropertyLocation());
+        }
+        
+        model.addAttribute("properties", uniqueLocations);
     }
 
     @GetMapping("signin")
