@@ -39,16 +39,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Properties` (
 ENGINE = InnoDB;
 
 INSERT INTO `Properties` (`propertiesID`, `propertyLocation`, `propertyName`, `rating`, `ammenitiesID`, `perNightPrice`, `propertyType`) VALUES
-(1, 'New York City', 'Parkview Suites', '4.5 stars', 1, '250', 'hotel'),
-(2, 'Los Angeles', 'Ocean View Villa', '5 stars', 2, '500', 'house'),
-(3, 'Miami', 'Beachside Condo', '4 stars', 3, '150', 'apartment'),
-(4, 'Chicago', 'The Windy City Hostel', '3.5 stars', 4, '50', 'hostel'),
-(5, 'Paris', 'Eiffel Tower View Apartment', '4.5 stars', 5, '300', 'apartment'),
-(6, 'London', 'Covent Garden Hotel', '4 stars', 6, '200', 'hotel'),
-(7, 'Tokyo', 'Shinjuku Loft', '4 stars', 7, '150', 'apartment'),
-(8, 'Sydney', 'Harbour View House', '5 stars', 8, '750', 'house'),
-(9, 'Barcelona', 'Gothic Quarter Apartment', '4 stars', 9, '100', 'apartment'),
-(10, 'Rome', 'Vatican View Suite', '5 stars', 10, '400', 'hotel');
+(1, 'New York City', 'Parkview Suites', '4.5', 1, '250', 'hotel'),
+(2, 'Los Angeles', 'Ocean View Villa', '5', 2, '500', 'house'),
+(3, 'Miami', 'Beachside Condo', '4', 3, '150', 'apartment'),
+(4, 'Chicago', 'The Windy City Hostel', '3.5', 4, '50', 'hostel'),
+(5, 'Paris', 'Eiffel Tower View Apartment', '4.5', 5, '300', 'apartment'),
+(6, 'London', 'Covent Garden Hotel', '4', 6, '200', 'hotel'),
+(7, 'Tokyo', 'Shinjuku Loft', '4', 7, '150', 'apartment'),
+(8, 'Sydney', 'Harbour View House', '5', 8, '750', 'house'),
+(9, 'Barcelona', 'Gothic Quarter Apartment', '4', 9, '100', 'apartment'),
+(10, 'Rome', 'Vatican View Suite', '5', 10, '400', 'hotel');
 
 
 
