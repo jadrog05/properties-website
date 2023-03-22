@@ -1,13 +1,16 @@
 package com.sg.propertyWebsite.entities;
 
+import java.util.Objects;
+
 public class Property {
     private int propertyID;
+    private String propertyLocation;
     private String propertyName;
+    private int capacity;
     private double rating;
     private double perNightCost;
     private int ammenitiesID;
     private String propertyType;
-    private int capacity;
 
     public int getPropertyID() {
         return propertyID;
@@ -15,6 +18,22 @@ public class Property {
 
     public void setPropertyID(int propertyID) {
         this.propertyID = propertyID;
+    }
+
+    public String getPropertyLocation() {
+        return propertyLocation;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    public void setPropertyLocation(String propertyLocation) {
+        this.propertyLocation = propertyLocation;
     }
 
     public String getPropertyName() {
@@ -58,55 +77,39 @@ public class Property {
         this.propertyType = propertyType;
     }
 
-    public int getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Property property)) return false;
-
-        if (getPropertyID() != property.getPropertyID()) return false;
-        if (Double.compare(property.getRating(), getRating()) != 0) return false;
-        if (Double.compare(property.getPerNightCost(), getPerNightCost()) != 0) return false;
-        if (getAmmenitiesID() != property.getAmmenitiesID()) return false;
-        if (getCapacity() != property.getCapacity()) return false;
-        if (getPropertyName() != null ? !getPropertyName().equals(property.getPropertyName()) : property.getPropertyName() != null)
-            return false;
-        return getPropertyType() != null ? getPropertyType().equals(property.getPropertyType()) : property.getPropertyType() == null;
+        if (o == null || getClass() != o.getClass()) return false;
+        Property property = (Property) o;
+        return propertyID == property.propertyID
+                && Double.compare(property.capacity, capacity) == 0
+                && Double.compare(property.rating, rating) == 0
+                && Double.compare(property.perNightCost, perNightCost) == 0
+                && ammenitiesID == property.ammenitiesID
+                && Objects.equals(propertyLocation, property.propertyLocation)
+                && Objects.equals(propertyName, property.propertyName)
+                && Objects.equals(propertyType, property.propertyType);
     }
 
     @Override
     public int hashCode() {
-        int result;
-        long temp;
-        result = getPropertyID();
-        result = 31 * result + (getPropertyName() != null ? getPropertyName().hashCode() : 0);
-        temp = Double.doubleToLongBits(getRating());
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(getPerNightCost());
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + getAmmenitiesID();
-        result = 31 * result + (getPropertyType() != null ? getPropertyType().hashCode() : 0);
-        result = 31 * result + getCapacity();
-        return result;
+        return Objects.hash(propertyID, propertyLocation, propertyName, capacity, rating, perNightCost,
+                ammenitiesID, propertyType);
     }
 
     @Override
     public String toString() {
         return "Property{" +
                 "propertyID=" + propertyID +
+                ", propertyLocation='" + propertyLocation + '\'' +
                 ", propertyName='" + propertyName + '\'' +
+                ", capacity=" + capacity +
                 ", rating=" + rating +
                 ", perNightCost=" + perNightCost +
                 ", ammenitiesID=" + ammenitiesID +
                 ", propertyType='" + propertyType + '\'' +
-                ", capacity=" + capacity +
                 '}';
     }
 }

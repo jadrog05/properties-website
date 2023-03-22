@@ -40,24 +40,24 @@ public class Amenity {
         this.swimmingPool = swimmingPool;
     }
 
-    public List<String> getAmmenities(){
+    public List<String> getAmmenities() {
         List<String> amenitiesList = new ArrayList<>();
-        if(this.tv){
+        if (this.tv) {
             amenitiesList.add("TV");
         }
-        if(this.fridge){
+        if (this.fridge) {
             amenitiesList.add("Fridge");
         }
-        if(this.hotTub){
+        if (this.hotTub) {
             amenitiesList.add("Hot Tub");
         }
-        if(this.oven){
+        if (this.oven) {
             amenitiesList.add("Oven");
         }
-        if(this.microwave){
+        if (this.microwave) {
             amenitiesList.add("Microwave");
         }
-        if(this.swimmingPool){
+        if (this.swimmingPool) {
             amenitiesList.add("Swimming Pool");
         }
         return amenitiesList;
