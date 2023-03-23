@@ -16,27 +16,43 @@
 </head>
 
 <!-- Main Body of Page -->
+<!-- Background -->
 <body th:style="'background-image: url(' + @{/images/home-background.jpg} + '); background-size: cover;
     background-repeat: no-repeat; background-position: center center; min-height: 100vh; overflow: hidden;'">
+
+<style>
+        body::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-color: rgba(47,103,177,.3);
+        }
+
+</style>
+
 <!-- Title -->
 <div class="container">
     <div class="col m-4">
         <div class="col text-center">
-            <h1 style="font-size: 64px;">J&Js Getaways</h1>
+            <h1 style="color: white; font-size: 64px;">J&Js Getaways</h1>
         </div>
     </div>
 </div>
 
 <!-- Property information -->
 <div class="container">
-
-    <div class="container border border-dark" name="propertyDetailsTemplate" style="background-color:white">
+    <div class="container" name="propertyDetailsTemplate" style="background-color:white; box-shadow: 0 5px 20px -5px rgba(0,0,0,.3); border-radius: 4px;">
         <div class="row" style="justify-content: center;">
-            <h3 th:text="${p.propertyName}"></h3>
+            <h3 style="padding-top:20px;" th:text="${p.propertyName}"></h3>
         </div>
         <div class="row">
             <div class="col m-3">
-                <span>Image</span>
+                <img th:src="@{images/logo-placeholder.jpg}" alt="Property image" style="float:left;width:200px;">
             </div>
 
             <!-- Amenities table -->
@@ -70,7 +86,7 @@
 
 <!-- Gather booking details -->
 <div class="container">
-    <div class="row m-4 border border-dark" style="background-color: white">
+    <div class="row m-4" style="background-color: white; box-shadow: 0 5px 20px -5px rgba(0,0,0,.3); border-radius: 4px;">
         <div class="col m-3">
             <form action="#" th:action="@{/confirmBooking}" method="POST" th:object="${b}" style="padding: 20px"
                   class="form">

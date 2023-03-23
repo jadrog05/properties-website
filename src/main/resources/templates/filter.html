@@ -16,12 +16,30 @@
 </head>
 
 <!-- Main Body of Page -->
-<body>
+<!-- Background -->
+<body th:style="'background-image: url(' + @{/images/home-background.jpg} + '); background-size: cover;
+    background-repeat: no-repeat; background-position: center center; min-height: 100vh; overflow: hidden;'">
+
+<style>
+        body::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-color: rgba(47,103,177,.3);
+        }
+
+</style>
+
 <!-- Title -->
 <div class="container">
     <div class="col m-4">
         <div class="col text-center">
-            <h1 style="font-size: 64px;">J&Js Getaways</h1>
+            <h1 style="color: white; font-size: 64px;">J&Js Getaways</h1>
         </div>
     </div>
 </div>
@@ -30,7 +48,7 @@
 <div class="container">
     <div class="row m-4">
         <div class="col text-center">
-            <h1>Filter settings</h1>
+            <h1 style="color: white;">Filter settings</h1>
         </div>
     </div>
 </div>
@@ -42,7 +60,7 @@
             <!-- Need to pass in property location for when we go back to the property page -->
             <input type="hidden" name="propertyLocation" th:value="${property.propertyLocation}"/>
 
-            <label for="numberOfGuests">Number of guests:</label>
+            <label style="color: white;" for="numberOfGuests">Number of guests:</label>
             <select class="form-control" id="numberOfGuests" name="numberOfGuests">
                 <option value="0">-</option>
                 <option value="1">1</option>
@@ -56,7 +74,7 @@
             </select>
 
             <!-- Hard coding because we rent out certain properties & lazy -->
-            <label for="propertyType">Property Type:</label>
+            <label style="color: white;" for="propertyType">Property Type:</label>
             <select class="form-control" id="propertyType" name="propertyType">
                 <option value="0">-</option>
                 <option value="hotel">Hotel</option>

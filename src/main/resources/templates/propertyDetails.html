@@ -13,42 +13,54 @@
 </head>
 
 <!-- Main Body of Page -->
+<!-- Background -->
 <body th:style="'background-image: url(' + @{/images/home-background.jpg} + '); background-size: cover;
     background-repeat: no-repeat; background-position: center center; min-height: 100vh; overflow: hidden;'">
+
+<style>
+        body::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-color: rgba(47,103,177,.3);
+        }
+
+</style>
+
 <!-- Title -->
 <div class="container">
     <div class="col m-4">
         <div class="col text-center">
-            <h1 style="font-size: 64px;">J&Js Getaways</h1>
+            <h1 style="color: white; font-size: 64px;">J&Js Getaways</h1>
         </div>
     </div>
 </div>
 
 <div class="container">
-
-    <!-- Property name -->
-
-
     <!-- Controls -->
     <div class="row m-4">
         <div class="col text-center m-3">
-            <a href="javascript:history.back()" class="btn btn-outline-primary btn-lg background" style="background-colour: white">Back to properties</a>
+            <a href="javascript:history.back()" class="btn btn-outline-primary btn-lg background" style=" color: white; border-color: white;">Back to properties</a>
         </div>
+
     </div>
 
-
-
-    <div class="col m-4 border border-dark" name="propertyDetailsTemplate" style="background-color:white">
+    <div class="col m-4" name="propertyDetailsTemplate" style="background-color:white; box-shadow: 0 5px 20px -5px rgba(0,0,0,.3); border-radius: 4px;">
 
         <!-- Image -->
         <div class="row m-4"style="background-color: white">
-            <div class="col text-center">
+            <div style="padding-top:20px;" class="col text-center">
                 <h1 th:text="${property.propertyName}"></h1>
             </div>
         </div>
         <div class="row">
             <div class="col m-3">
-                <span>Image</span>
+                <img th:src="@{images/logo-placeholder.jpg}" alt="Property image" style="float:left;width:200px;">
             </div>
 
             <!-- Amenities table -->
@@ -69,7 +81,7 @@
                     <tbody>
                     <div class="row">Capacity: <span th:text="${property.capacity}"></span></div>
                     <div class="row">Property Type: <span th:text="${property.propertyType}"></span></div>
-                    <div class="row">Rating: <span th:text="${property.rating}"></span> / 5</div>
+                    <div style="padding-bottom:20px;" class="row">Rating: <span th:text="${property.rating}"></span> / 5</div>
                     <div class="row"><a class="btn btn-outline-primary btn-lg" href="#"
                                         th:href="@{/newGuest(propertyID=${property.propertyID})}"><span>Book for £<span
                             th:text="${property.perNightCost}"></span> per night!</span></a></div>
