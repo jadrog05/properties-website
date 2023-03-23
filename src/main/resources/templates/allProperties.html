@@ -33,39 +33,39 @@
 </div>
 
 <!-- Property grid -->
-<div class="grid-container"
-     style="display: grid; grid-template-columns: repeat(2, 1fr); grid-gap: 20px; padding: 20px;">
-    <div th:each="property : ${properties}" class="propertyCard" style="border: 1px solid #ccc; padding: 20px;">
-        <div style="display: flex;">
-            <img th:src="@{images/logo-placeholder.jpg}" alt="Property image" style="float:left;width:200px;">
-            <div style="margin-left: 20px;">
-                <h2><span th:text="${property.propertyName}"></span> -
-                    <span th:text="${property.propertyLocation}" style="font-size: 0.6em;"></span></h2>
-                <div>
-                    <div style="display: block;">
-                        Capacity: <span th:text="${property.capacity}"></span>
-                    </div>
-                    <div style="display: block;">
-                        Price per night: <span th:text="${property.perNightCost}"></span>
-                    </div>
-                    <div style="display: block;">
-                        Rating: <span th:text="${property.rating}"></span>
+<div class="row m-4 border border-dark">
+    <div class="col m-3">
+        <form action="#" th:action="@{/confirmBooking}" method="POST" th:object="${b}" style="padding: 20px"
+              class="form">
+            <input type="hidden" name="propertyID" th:value="${p.propertyID}"/>
+            <input type="hidden" name="guestID" th:value="${g.guestID}"/>
+            <div class="form-group row">
+                <div class="form-group col">
+                    <label class="row-3 row-form-label">Guests </label>
+                    <div class="col-9">
+                        <input type="number" th:field="*{numberOfGuests}"/>
                     </div>
                 </div>
-                <div>
-                    <table>
-                        <tr>
-                            <td><a href="#" th:href="@{/propertyDetails(id=${property.propertyID})}"
-                                   class="btn btn-outline-primary btn">More Details</a></td>
-                            <td><a href="#" th:href="@{/bookProperty(id=${property.propertyID})}"
-                                   class="btn btn-outline-primary btn">Book</a></td>
-                        </tr>
-                    </table>
+                <div class="form-group col">
+                    <label class="row-3 row-form-label">Start Date </label>
+                    <div class="col-9">
+                        <input type="date" th:field="*{startDate}"/>
+                    </div>
+                </div>
+                <div class="form-group col">
+                    <label class="row-3 row-form-label">End Date </label>
+                    <div class="col-9">
+                        <input type="date" th:field="*{endDate}"/>
+                    </div>
                 </div>
             </div>
-        </div>
+            <div class="form-group row">
+                <button type="submit" class="btn btn-primary">Confirm</button>
+            </div>
+        </form>
     </div>
 </div>
+<!-- End main body -->
 <!-- End main body -->
 
 <!-- Optional JavaScript -->

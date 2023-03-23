@@ -33,8 +33,6 @@
             background-color: rgba(47,103,177,.3);
         }
 
-
-
 </style>
 <!-- Title -->
 <div class="container">
@@ -55,76 +53,17 @@
     </div>
 </div>
 
-<div style="display: flex; justify-content: center; align-items: center; height: 40vh; padding-top:100px">
-    <div class="col-8"
-         style="justify-content: center; text-align: center; background-color: #fff; padding: 10px; box-shadow: 0 5px 20px -5px rgba(0,0,0,.3); border-radius: 4px;">
-        <div class="row" style="justify-content: center">
-            <h4 th:text="${p.propertyName}"></h4>
-        </div>
-        <div class="row">
-            <div class="col m-3">
-                <img th:src="@{images/logo-placeholder.jpg}" alt="Property image" style="float:left;width:200px;">
-            </div>
-
-            <!-- Your stay -->
-            <div class="col m-3" style="justify-content: left;">
-                <table>
-                    <div style="display: block;justify-content: left; padding-bottom:5px">
-                        <h5>Your Stay</h5>
-                    </div>
-                    <div style="display: block; justify-content: left; padding-bottom:5px">
-                        <span>Dates: </span> <span th:text="${#dates.format(b.startDate, 'dd/MM/yyyy')}"></span> - <span
-                            th:text="${#dates.format(b.endDate, 'dd/MM/yyyy')}"></span>
-                    </div>
-                    <div style="display: block;justify-content: left; padding-bottom:5px">
-                        <span>Total Cost: </span><span th:text="${b.totalCost}"></span>
-                    </div>
-                    <div style="display: block;justify-content: left; padding-bottom:5px">
-                        <span>Guests: </span><span th:text="${b.numberOfGuests}"></span>
-                    </div>
-                </table>
-            </div>
-        </div>
-        <div class="row">
-
-            <!-- Amenities grid -->
-            <div class="col m-3">
-                <table class="table table-striped">
-                    <thead>
-                    <th>Amenities</th>
-                    </thead>
-                    <tbody th:each="String : ${a}">
-                    <td> - <span th:text="${String}"></span></td>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Your info -->
-            <div class="col m-3" style="align-content: left">
-                <table style="padding:10px; justify-content: left;">
-                    <div style="display: block;justify-content: left; padding-bottom:5px">
-                        <h5>Your Information </h5>
-                    </div>
-                    <div style="display: block; justify-content: left; padding-bottom:5px">
-                        <span>Name: </span> <span th:text="${g.firstName}"></span> <span th:text="${g.lastName}"></span>
-                    </div>
-                    <div style="display: block;justify-content: left; padding-bottom:5px">
-                        <span>Email: </span><span th:text="${g.email}"></span>
-                    </div>
-                    <div style="display: block; justify-content: left; padding-bottom:5px">
-                        <span>Phone Number: </span> <span th:text="${g.phoneNumber}"></span>
-                    </div>
-                </table>
-
-            </div>
-        </div>
-
-        <!-- Return button -->
-        <div class="row" style="justify-content: center">
-            <a href="index" class="btn btn-outline-primary btn-lg">Return To Home Page</a>
+<<!-- Works to get multiple objects BUT repeats each twice -->
+<div style="display: grid; grid-template-columns: repeat(1, 1fr); grid-gap: 20px; padding: 20px;">
+    <div th:each="g : ${g}" class="propertyCard">
+        <div th:each="p : ${p}" class="propertyCard">
+            <span th:text="${g.email}"></span>
+            <span th:text="${p.propertyID}"></span>
         </div>
     </div>
 </div>
+
+
 <!-- End main body -->
 
 <!-- Optional JavaScript -->
