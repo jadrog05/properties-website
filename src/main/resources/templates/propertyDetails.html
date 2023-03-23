@@ -38,7 +38,7 @@
             <a href="javascript:history.back()" class="btn btn-outline-primary btn-lg">Back to properties</a>
         </div>
         <div class="col text-center m-3">
-            <a href="bookProperty" class="btn btn-outline-primary btn-lg">Book</a>
+            <a href="newGuest" class="btn btn-outline-primary btn-lg">Book</a>
         </div>
     </div>
 
@@ -69,7 +69,7 @@
                 <div class="row">Property Type: <span th:text="${property.propertyType}"></span></div>
                 <div class="row">Rating: <span th:text="${property.rating}"></span> / 5</div>
                 <div class="row"><a class="btn btn-outline-primary btn-lg" href="#"
-                                    th:href="@{/bookProperty(id=${property.propertyID})}"><span>Book for £<span
+                                    th:href="@{/newGuest(propertyID=${property.propertyID})}"><span>Book for £<span
                         th:text="${property.perNightCost}"></span> per night!</span></a></div>
                 </tbody>
             </div>

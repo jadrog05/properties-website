@@ -62,13 +62,16 @@ public class BookingController {
     public String addBooking(Model model, @ModelAttribute("b") Booking b, int guestID, int propertyID){
         Guest g = guestDao.getGuestByID(guestID);
         Property p = propertyDao.getPropertyByID(propertyID);
+        List<String> a = propertyDao.getAmmentiesByID(p.getAmmenitiesID());
         b.setGuestID(guestID);
         b.setPropertiesID(propertyID);
         b = bookingService.calculateTotalCost(b);
         model.addAttribute("g",g);
         model.addAttribute("p",p);
+        model.addAttribute("a",a);
         //model.addAttribute("b",b)
         System.out.println(b.toString());
-        return "confirmBooking";
+        b = bookingDao.addBooking(b);
+        return "bookingSummary";
     }
 }
