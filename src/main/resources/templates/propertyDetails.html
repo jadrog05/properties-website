@@ -13,7 +13,8 @@
 </head>
 
 <!-- Main Body of Page -->
-<body>
+<body th:style="'background-image: url(' + @{/images/home-background.jpg} + '); background-size: cover;
+    background-repeat: no-repeat; background-position: center center; min-height: 100vh; overflow: hidden;'">
 <!-- Title -->
 <div class="container">
     <div class="col m-4">
@@ -26,51 +27,57 @@
 <div class="container">
 
     <!-- Property name -->
-    <div class="row m-4">
-        <div class="col text-center border border-dark">
-            <h1 th:text="${property.propertyName}"></h1>
-        </div>
-    </div>
+
 
     <!-- Controls -->
-    <div class="row m-4 border border-dark">
+    <div class="row m-4">
         <div class="col text-center m-3">
-            <a href="javascript:history.back()" class="btn btn-outline-primary btn-lg">Back to properties</a>
+            <a href="javascript:history.back()" class="btn btn-outline-primary btn-lg background" style="background-colour: white">Back to properties</a>
         </div>
     </div>
 
-    <div class="row m-4 border border-dark" name="propertyDetailsTemplate">
+
+
+    <div class="col m-4 border border-dark" name="propertyDetailsTemplate" style="background-color:white">
 
         <!-- Image -->
-        <div class="col m-3">
-            <span>Image</span>
-        </div>
-
-        <!-- Amenities table -->
-        <div class="col m-3">
-            <table class="table table-striped">
-                <thead>
-                <th>Amenities</th>
-                </thead>
-                <tbody th:each="String : ${a}">
-                <td> - <span th:text="${String}"></span></td>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- More information details -->
-        <div class="col m-3 background-dark">
-            <div class="grid">
-                <tbody>
-                <div class="row">Capacity: <span th:text="${property.capacity}"></span></div>
-                <div class="row">Property Type: <span th:text="${property.propertyType}"></span></div>
-                <div class="row">Rating: <span th:text="${property.rating}"></span> / 5</div>
-                <div class="row"><a class="btn btn-outline-primary btn-lg" href="#"
-                                    th:href="@{/newGuest(propertyID=${property.propertyID})}"><span>Book for £<span
-                        th:text="${property.perNightCost}"></span> per night!</span></a></div>
-                </tbody>
+        <div class="row m-4"style="background-color: white">
+            <div class="col text-center">
+                <h1 th:text="${property.propertyName}"></h1>
             </div>
         </div>
+        <div class="row">
+            <div class="col m-3">
+                <span>Image</span>
+            </div>
+
+            <!-- Amenities table -->
+            <div class="col m-3">
+                <table class="table table-striped">
+                    <thead>
+                    <th>Amenities</th>
+                    </thead>
+                    <tbody th:each="String : ${a}">
+                    <td> - <span th:text="${String}"></span></td>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- More information details -->
+            <div class="col m-3 background-dark">
+                <div class="grid">
+                    <tbody>
+                    <div class="row">Capacity: <span th:text="${property.capacity}"></span></div>
+                    <div class="row">Property Type: <span th:text="${property.propertyType}"></span></div>
+                    <div class="row">Rating: <span th:text="${property.rating}"></span> / 5</div>
+                    <div class="row"><a class="btn btn-outline-primary btn-lg" href="#"
+                                        th:href="@{/newGuest(propertyID=${property.propertyID})}"><span>Book for £<span
+                            th:text="${property.perNightCost}"></span> per night!</span></a></div>
+                    </tbody>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 <!-- End main body -->
