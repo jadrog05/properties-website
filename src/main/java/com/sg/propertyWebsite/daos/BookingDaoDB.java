@@ -32,6 +32,17 @@ public class BookingDaoDB implements BookingDao {
     }
 
     @Override
+    public Booking getBookingByGuestId(int id) {
+        try {
+            String SELECT_BOOKING_BY_GUEST_ID = "SELECT * FROM Bookings WHERE guestID = ?;";
+            Booking booking = jdbc.queryForObject(SELECT_BOOKING_BY_GUEST_ID, new BookingDaoDB.BookingMapper(), id);
+            return booking;
+        } catch (DataAccessException e) {
+            return null;
+        }
+    }
+
+    @Override
     public List<Booking> getAllBooking() {
         try {
             String SELECT_ALL_BOOKINGS = "SELECT * FROM Bookings;";

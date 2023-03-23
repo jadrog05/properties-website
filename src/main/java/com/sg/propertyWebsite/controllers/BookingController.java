@@ -52,26 +52,28 @@ public class BookingController {
     }
 
     @GetMapping("/confirmBooking")
-    public String newBooking(Model model){
+    public String newBooking(Model model) {
         Booking b = new Booking();
-        model.addAttribute("b",b);
+        model.addAttribute("b", b);
         return "confirmBooking";
     }
 
     @PostMapping("/confirmBooking")
-    public String addBooking(Model model, @ModelAttribute("b") Booking b, int guestID, int propertyID){
+    public String addBooking(Model model, @ModelAttribute("b") Booking b, int guestID, int propertyID) {
         Guest g = guestDao.getGuestByID(guestID);
         Property p = propertyDao.getPropertyByID(propertyID);
         List<String> a = propertyDao.getAmmentiesByID(p.getAmmenitiesID());
         b.setGuestID(guestID);
         b.setPropertiesID(propertyID);
         b = bookingService.calculateTotalCost(b);
-        model.addAttribute("g",g);
-        model.addAttribute("p",p);
-        model.addAttribute("a",a);
+        model.addAttribute("g", g);
+        model.addAttribute("p", p);
+        model.addAttribute("a", a);
         //model.addAttribute("b",b)
         System.out.println(b.toString());
         b = bookingDao.addBooking(b);
         return "bookingSummary";
     }
+
+
 }

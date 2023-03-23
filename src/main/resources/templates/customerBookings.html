@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>J&Js Getaways</title>
+</head>
+
+<!-- Main Body of Page -->
+<body th:style="'background-image: url(' + @{/images/home-background.jpg} + '); background-size: cover;
+    background-repeat: no-repeat; background-position: center center; min-height: 100vh; overflow: hidden;'">
+
+<style>
+        body::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-color: rgba(47,103,177,.3);
+        }
+
+
+
+</style>
+<!-- Title -->
+<div class="container">
+    <div class="row m-4">
+        <div class="col text-center">
+            <h1 style="color: white; font-size: 64px;">J&amp;Js Getaways</h1>
+        </div>
+    </div>
+</div>
+
+<!-- Current booking title -->
+<div class="container"
+     style="display: flex; justify-content: center; align-items: center;">
+    <div class="row m-4" style="display:flex; justify-content: center">
+        <div class="col  text-center">
+            <h1 style="color: white;">Your Current Bookings:</h1>
+        </div>
+    </div>
+</div>
+
+<div style="display: flex; justify-content: center; align-items: center; height: 40vh; padding-top:100px">
+    <div class="col-8"
+         style="justify-content: center; text-align: center; background-color: #fff; padding: 10px; box-shadow: 0 5px 20px -5px rgba(0,0,0,.3); border-radius: 4px;">
+        <div class="row" style="justify-content: center">
+            <h4 th:text="${p.propertyName}"></h4>
+        </div>
+        <div class="row">
+            <div class="col m-3">
+                <img th:src="@{images/logo-placeholder.jpg}" alt="Property image" style="float:left;width:200px;">
+            </div>
+
+            <!-- Your stay -->
+            <div class="col m-3" style="justify-content: left;">
+                <table>
+                    <div style="display: block;justify-content: left; padding-bottom:5px">
+                        <h5>Your Stay</h5>
+                    </div>
+                    <div style="display: block; justify-content: left; padding-bottom:5px">
+                        <span>Dates: </span> <span th:text="${#dates.format(b.startDate, 'dd/MM/yyyy')}"></span> - <span
+                            th:text="${#dates.format(b.endDate, 'dd/MM/yyyy')}"></span>
+                    </div>
+                    <div style="display: block;justify-content: left; padding-bottom:5px">
+                        <span>Total Cost: </span><span th:text="${b.totalCost}"></span>
+                    </div>
+                    <div style="display: block;justify-content: left; padding-bottom:5px">
+                        <span>Guests: </span><span th:text="${b.numberOfGuests}"></span>
+                    </div>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+
+            <!-- Amenities grid -->
+            <div class="col m-3">
+                <table class="table table-striped">
+                    <thead>
+                    <th>Amenities</th>
+                    </thead>
+                    <tbody th:each="String : ${a}">
+                    <td> - <span th:text="${String}"></span></td>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Your info -->
+            <div class="col m-3" style="align-content: left">
+                <table style="padding:10px; justify-content: left;">
+                    <div style="display: block;justify-content: left; padding-bottom:5px">
+                        <h5>Your Information </h5>
+                    </div>
+                    <div style="display: block; justify-content: left; padding-bottom:5px">
+                        <span>Name: </span> <span th:text="${g.firstName}"></span> <span th:text="${g.lastName}"></span>
+                    </div>
+                    <div style="display: block;justify-content: left; padding-bottom:5px">
+                        <span>Email: </span><span th:text="${g.email}"></span>
+                    </div>
+                    <div style="display: block; justify-content: left; padding-bottom:5px">
+                        <span>Phone Number: </span> <span th:text="${g.phoneNumber}"></span>
+                    </div>
+                </table>
+
+            </div>
+        </div>
+
+        <!-- Return button -->
+        <div class="row" style="justify-content: center">
+            <a href="index" class="btn btn-outline-primary btn-lg">Return To Home Page</a>
+        </div>
+    </div>
+</div>
+<!-- End main body -->
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</body>
+</html>;
