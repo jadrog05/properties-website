@@ -11,9 +11,24 @@
 
     <title>J&Js Getaways</title>
 </head>
+<style>
+
+    .grid-scroll {
+    display: grid;
+    height: 1000px;
+    align-items: center;
+    grid-auto-flow: row;
+    grid-auto-rows: 25%; /* play with this to change height of the children, 50% will fill half */
+    grid-template-columns: unset; /* do not set template columns and rows */
+    grid-template-rows: unset;
+    overflow: scroll;
+}
+
+</style>
 
 <!-- Main Body of Page -->
-<body>
+<body th:style="'background-image: url(' + @{/images/home-background.jpg} + '); background-size: cover;
+    background-repeat: no-repeat; background-position: center center; min-height: 100vh; overflow: hidden;'">
 <!-- Title -->
 <div class="container">
     <div class="col m-4">
@@ -33,10 +48,11 @@
 </div>
 
 <!-- Property grid -->
-<div class="grid-container"
-     style="display: grid; grid-template-columns: repeat(2, 1fr); grid-gap: 20px; padding: 20px;">
-    <div th:each="property : ${properties}" class="propertyCard" style="border: 1px solid #ccc; padding: 20px;">
-        <div style="display: flex;">
+
+<div class="grid-container grid-scroll"
+     style="display: grid; grid-template-columns: repeat(2, 1fr); grid-gap: 20px; padding: 20px; bottom:0;">
+    <div th:each="property : ${properties}" class="propertyCard" style="border: 1px solid #ccc; padding: 20px; height:200px; background-color: white">
+        <div style="background-color: white;">
             <img th:src="@{images/logo-placeholder.jpg}" alt="Property image" style="float:left;width:200px;">
             <div style="margin-left: 20px;">
                 <h2><span th:text="${property.propertyName}"></span> -
@@ -57,7 +73,7 @@
                         <tr>
                             <td><a href="#" th:href="@{/propertyDetails(id=${property.propertyID})}"
                                    class="btn btn-outline-primary btn">More Details</a></td>
-                            <td><a href="#" th:href="@{/bookProperty(id=${property.propertyID})}"
+                            <td><a href="#" th:href="@{/newGuest(propertyID=${property.propertyID})}"
                                    class="btn btn-outline-primary btn">Book</a></td>
                         </tr>
                     </table>
