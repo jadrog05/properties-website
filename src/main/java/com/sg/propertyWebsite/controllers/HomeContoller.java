@@ -3,12 +3,14 @@ package com.sg.propertyWebsite.controllers;
 import com.sg.propertyWebsite.daos.BookingDao;
 import com.sg.propertyWebsite.daos.GuestDao;
 import com.sg.propertyWebsite.daos.PropertyDao;
+import com.sg.propertyWebsite.entities.Guest;
 import com.sg.propertyWebsite.entities.Property;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.HashSet;
 import java.util.List;
@@ -59,7 +61,7 @@ public class HomeContoller {
 
         // Go through list and check if meeting filter
         for (Property property : propertyList) {
-            if (property.getCapacity() > numberOfGuests &&
+            if (property.getCapacity() >= numberOfGuests &&
                     (Objects.equals(property.getPropertyType(), propertyType) || propertyType == null)) {
                 meetsFilter.add(property);
             }

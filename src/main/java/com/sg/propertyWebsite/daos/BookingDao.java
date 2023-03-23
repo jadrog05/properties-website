@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface BookingDao {
     Booking getBookingByID(int id);
+    Booking getBookingByGuestId(int id);
 
     List<Booking> getAllBooking();
 

@@ -3,6 +3,7 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -16,7 +17,6 @@
 </head>
 
 <!-- Main Body of Page -->
-<!-- Background -->
 <body th:style="'background-image: url(' + @{/images/home-background.jpg} + '); background-size: cover;
     background-repeat: no-repeat; background-position: center center; min-height: 100vh; overflow: hidden;'">
 
@@ -33,9 +33,7 @@
             background-color: rgba(47,103,177,.3);
         }
 
-
 </style>
-
 <!-- Title -->
 <div class="container">
     <div class="row m-4">
@@ -45,26 +43,27 @@
     </div>
 </div>
 
-<!-- Search for a booking -->
-<div style="display: flex; justify-content: center; align-items: center; height: 40vh; padding-top:200px">
-    <div class="col-3"
-         style="text-align: center; background-color: #fff; padding: 30px; box-shadow: 0 5px 20px -5px rgba(0,0,0,.3); border-radius: 4px;">
-        <h3 style="margin-bottom: 20px;">Please enter your email:</h3>
-        <form action="customerBookings" method="GET" class="form" style="margin-bottom: 20px;">
-            <div class="col-lg-10" th:object="${guest}" style="display: inline-block; text-align: center;">
-
-                <label for="email" class="col-3 col-form-label"></label>
-                <div class="col-3">
-                    <input type="text" name="email" id="email"/>
-                </div>
-
-            </div>
-            <div>
-                <button type="submit" class="btn btn-primary">Search</button>
-            </div>
-        </form>
+<!-- Current booking title -->
+<div class="container"
+     style="display: flex; justify-content: center; align-items: center;">
+    <div class="row m-4" style="display:flex; justify-content: center">
+        <div class="col  text-center">
+            <h1 style="color: white;">Your Current Bookings:</h1>
+        </div>
     </div>
 </div>
+
+<<!-- Works to get multiple objects BUT repeats each twice -->
+<div style="display: grid; grid-template-columns: repeat(1, 1fr); grid-gap: 20px; padding: 20px;">
+    <div th:each="g : ${g}" class="propertyCard">
+        <div th:each="p : ${p}" class="propertyCard">
+            <span th:text="${g.email}"></span>
+            <span th:text="${p.propertyID}"></span>
+        </div>
+    </div>
+</div>
+
+
 <!-- End main body -->
 
 <!-- Optional JavaScript -->
@@ -79,4 +78,4 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 </body>
-</html>
+</html>;

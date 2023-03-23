@@ -48,7 +48,6 @@
 </div>
 
 <!-- Property grid -->
-
 <div class="grid-container grid-scroll"
      style="display: grid; grid-template-columns: repeat(2, 1fr); grid-gap: 20px; padding: 20px; bottom:0;">
     <div th:each="property : ${properties}" class="propertyCard" style="border: 1px solid #ccc; padding: 20px; height:200px; background-color: white">
@@ -61,11 +60,11 @@
                     <div style="display: block;">
                         Capacity: <span th:text="${property.capacity}"></span>
                     </div>
-                    <div style="display: block;">
-                        Price per night: <span th:text="${property.perNightCost}"></span>
-                    </div>
-                    <div style="display: block;">
-                        Rating: <span th:text="${property.rating}"></span>
+                </div>
+                <div class="form-group col">
+                    <label class="row-3 row-form-label">Start Date </label>
+                    <div class="col-9">
+                        <input type="date" th:field="*{startDate}"/>
                     </div>
                 </div>
                 <div>
@@ -79,9 +78,13 @@
                     </table>
                 </div>
             </div>
-        </div>
+            <div class="form-group row">
+                <button type="submit" class="btn btn-primary">Confirm</button>
+            </div>
+        </form>
     </div>
 </div>
+<!-- End main body -->
 <!-- End main body -->
 
 <!-- Optional JavaScript -->

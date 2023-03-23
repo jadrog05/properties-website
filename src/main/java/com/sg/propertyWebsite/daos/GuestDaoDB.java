@@ -39,6 +39,17 @@ public class GuestDaoDB implements GuestDao {
     }
 
     @Override
+    public Guest getGuestByEmail(String email) {
+        try {
+            String SELECT_GUEST_BY_EMAIL = "SELECT * FROM Guests WHERE email = ?;";
+            Guest guest = jdbc.queryForObject(SELECT_GUEST_BY_EMAIL, new GuestMapper(), email);
+            return guest;
+        } catch (DataAccessException e) {
+            return null;
+        }
+    }
+
+    @Override
     public List<Guest> getAllGuests() {
         try {
             String SELECT_ALL_GUESTS = "SELECT * FROM Guests;";

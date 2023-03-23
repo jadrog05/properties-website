@@ -7,6 +7,7 @@ import java.util.List;
 public interface GuestDao {
 
     Guest getGuestByID(int id);
+    Guest getGuestByEmail(String email);
 
     Guest getGuestByEmail(String email);
 

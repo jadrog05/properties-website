@@ -80,9 +80,9 @@ public class BookingController {
     }
 
     @GetMapping("/confirmBooking")
-    public String newBooking(Model model){
+    public String newBooking(Model model) {
         Booking b = new Booking();
-        model.addAttribute("b",b);
+        model.addAttribute("b", b);
         return "confirmBooking";
     }
 
