@@ -71,6 +71,7 @@ public class BookingController {
             Property p = propertyDao.getPropertyByID(propertyID);
             model.addAttribute("g",g);
             model.addAttribute("p",p);
+            model.addAttribute("a", propertyDao.getAmmentiesByID(p.getAmmenitiesID()));
             return "confirmBooking";
         } else {
             Guest g = guestDao.getGuestByID(guestID);
