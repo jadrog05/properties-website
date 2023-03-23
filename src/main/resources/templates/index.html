@@ -15,55 +15,78 @@
     <title>J&Js Getaways</title>
 </head>
 
-<body>
+<body th:style="'background-image: url(' + @{/images/home-background.jpg} + '); background-size: cover;
+    background-repeat: no-repeat; background-position: center center; min-height: 100vh; overflow: hidden;'">
+
+<style>
+        body::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-color: rgba(47,103,177,.3);
+        }
+
+</style>
+
 <!-- Main Body of Page -->
 <!-- Title -->
 <div class="container">
     <div class="row m-4">
         <div class="col text-center">
-            <img src="../static/images/logo-placeholder.jpg" alt="Website logo" style="float:left;width:80px;"
-                 th:src="@{images/logo-placeholder.jpg}"/>
-            <h1>J&Js Getaways</h1>
+            <h1 style="color: white; font-size: 64px;">J&amp;Js Getaways</h1>
         </div>
     </div>
 </div>
 
 <div class="col text-right mt-3" style="position:absolute;top:10px;right:10px;">
-    <a href="signin" class="btn btn-outline-primary btn-lg">Sign In</a>
+    <a href="signin" class="btn btn-outline-primary btn-lg text-white border-white">Sign In</a>
 </div>
 
 <!-- Serach for a booking -->
-<div class="col-4">
-    <h3>Search Property's</h3>
-    <form action="properties" method="GET" class="form">
-        <div class="col-lg-3" th:object="${property}">
+<div style="display: flex; justify-content: center; align-items: center; height: 40vh; padding-top:200px">
+    <div class="col-2"
+         style="text-align: center; background-color: #fff; padding: 30px; box-shadow: 0 5px 20px -5px rgba(0,0,0,.3); border-radius: 4px;">
+        <h3 style="margin-bottom: 20px;">Search Properties</h3>
+        <form action="properties" method="GET" class="form" style="margin-bottom: 20px;">
+            <div class="col-lg-10" th:object="${property}" style="display: inline-block; text-align: center;">
 
-            <label for="propertyLocation">Select a location:</label>
-            <select class="form-control" id="propertyLocation" name="propertyLocation">
-                <option value="text">-</option>
-                <option th:each="property : ${properties}"
-                        th:value="${property}"
-                        th:text="${property}"></option>
-            </select>
+                <label for="propertyLocation">Select a location:</label>
+                <select class="form-control" id="propertyLocation" name="propertyLocation" style="margin-bottom: 10px;">
+                    <option value="text">-</option>
+                    <option th:each="property : ${properties}"
+                            th:value="${property}"
+                            th:text="${property}"></option>
+                </select>
 
-            <label for="numberOfGuests">Number of guests:</label>
-            <select class="form-control" id="numberOfGuests" name="numberOfGuests">
-                <option value="0">-</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-            </select>
+                <label for="numberOfGuests">Number of guests:</label>
+                <select class="form-control" id="numberOfGuests" name="numberOfGuests" style="margin-bottom: 20px;">
+                    <option value="0">-</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                </select>
 
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </form>
+        <div>
+            <a href="allProperties" class="btn btn-primary">Show all properties!</a>
         </div>
-        <button type="submit" class="btn btn-primary">Search</button>
-    </form>
-    <a href="allProperties" class="btn btn-primary">Show all properties!</a>
+    </div>
 </div>
+
 <!-- End main body -->
 
 <!-- Optional JavaScript -->
