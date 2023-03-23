@@ -51,6 +51,7 @@
     <div class="col-3"
          style="text-align: center; background-color: #fff; padding: 30px; box-shadow: 0 5px 20px -5px rgba(0,0,0,.3); border-radius: 4px; justify-content:center; align-items: center display:flex">
         <!-- Form -->
+        <h2>New Customer</h2>
                 <form action="#" th:action="@{/addGuestForm}" method="POST" th:object="${g}" style="padding: 20px;">
                     <input type="hidden" name="propertyID" th:value="${p.propertyID}"/>
                     <table style="padding:10px display:flex" >
@@ -98,9 +99,28 @@
                     <div class="row" style="align-text: right">
                         <button type="submit" class="btn btn-primary">Confirm</button>
                     </div>
-
-
                 </form>
+    </div>
+    <div class="col-3"
+         style="text-align: center; background-color: #fff; padding: 30px; box-shadow: 0 5px 20px -5px rgba(0,0,0,.3); border-radius: 4px; justify-content:center; align-items: center display:flex">
+        <h2>Existing Customer</h2>
+        <form action="#" th:action="@{/addGuestFormExistingCustomer}" method="POST" th:object="${g}" style="padding: 20px"
+              class="form">
+            <input type="hidden" name="propertyID" th:value="${p.propertyID}"/>
+            <table style="padding:10px" >
+                <tr>
+                    <td align="left"><label class="row-3 row-form-label">Email </label></td>
+                    <td align="right"><input type="text" th:field="*{email}"/></td>
+                </tr>
+                <tr>
+                    <td align="left"> <span style="color: red"th:if="${g.email == ' '}"> Error:</span> </td>
+                    <td align="right"> <span style="color: red"th:if="${g.email == ' '}">That email doesn't exist</span> </td>
+                </tr>
+            </table>
+            <div class="row" style="align-text: right">
+                <button type="submit" class="btn btn-primary">Confirm</button>
+            </div>
+        </form>
     </div>
 </div>
 <!-- End main body -->

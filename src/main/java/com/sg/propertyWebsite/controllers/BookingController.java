@@ -36,8 +36,11 @@ public class BookingController {
     public String newGuest(Model model, int propertyID) {
         Guest g = new Guest();
         Property p = propertyDao.getPropertyByID(propertyID);
+        boolean validEmail = true;
         model.addAttribute("g", g);
         model.addAttribute("p", p);
+
+        model.addAttribute("v",validEmail);
         return "addGuestForm";
     }
 
@@ -48,6 +51,25 @@ public class BookingController {
             return "addGuestForm";
         } else{
             g = guestDao.addGuest(g);
+            Property p = propertyDao.getPropertyByID(propertyID);  // Just want to return propertyID as int
+            List<String> a = propertyDao.getAmmentiesByID(propertyID);
+            model.addAttribute("p", p);  // Add to model to be used on confirmBooking.html
+            Booking b = new Booking();
+            model.addAttribute("b", b);
+            return "confirmBooking";
+        }
+    }
+
+    @PostMapping("/addGuestFormExistingCustomer")
+    public String addGuestExistingCustomer(  @ModelAttribute("g") Guest g,Model model,int propertyID) {
+        Guest guest = guestDao.getGuestByEmail(g.getEmail());
+        if(guest == null){
+            g.setEmail(" ");
+            model.addAttribute("p", propertyDao.getPropertyByID(propertyID));
+            model.addAttribute("g", g);
+            return "addGuestForm";
+        } else {
+            model.addAttribute("g",guest);
             Property p = propertyDao.getPropertyByID(propertyID);  // Just want to return propertyID as int
             List<String> a = propertyDao.getAmmentiesByID(propertyID);
             model.addAttribute("p", p);  // Add to model to be used on confirmBooking.html
@@ -88,6 +110,7 @@ public class BookingController {
             b = bookingDao.addBooking(b);
             return "bookingSummary";
         }
-
     }
+
+
 }
