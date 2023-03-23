@@ -11,19 +11,28 @@
 
     <title>J&Js Getaways</title>
 </head>
-<body>
-<!-- Main Body of Page -->
-<div class="container">
-    <div class="row m-4">
-        <div class="col text-center border border-dark">
 
-            <!-- TODO make this display the location -->
-            <h1>Add Guest</h1>
-            <h2></h2>
+<!-- Main Body of Page -->
+<body>
+<!-- Title -->
+<div class="container">
+    <div class="col m-4">
+        <div class="col text-center">
+            <h1 style="font-size: 64px;">J&Js Getaways</h1>
         </div>
     </div>
 </div>
 
+<!-- Add guest title -->
+<div class="container">
+    <div class="row m-4">
+        <div class="col text-center border border-dark">
+            <h1>Add Guest</h1>
+        </div>
+    </div>
+</div>
+
+<!-- Form -->
 <div class="row m-4 border border-dark" name="add-guest-form">
     <div class="col-7 text-center m-3 border border-dark">
         <form action="#" th:action="@{/newGuest}" method="POST" th:object="${g}" style="padding: 20px" class="form">
@@ -62,7 +71,6 @@
             <button type="submit" class="btn btn-primary">Confirm</button>
         </form>
     </div>
-
 </div>
 <!-- End main body -->
 

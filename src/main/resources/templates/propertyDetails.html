@@ -11,14 +11,28 @@
 
     <title>J&Js Getaways</title>
 </head>
-<body>
+
 <!-- Main Body of Page -->
+<body>
+<!-- Title -->
 <div class="container">
+    <div class="col m-4">
+        <div class="col text-center">
+            <h1 style="font-size: 64px;">J&Js Getaways</h1>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- Property name -->
     <div class="row m-4">
         <div class="col text-center border border-dark">
             <h1 th:text="${property.propertyName}"></h1>
         </div>
     </div>
+
+    <!-- Controls -->
     <div class="row m-4 border border-dark">
         <div class="col text-center m-3">
             <a href="javascript:history.back()" class="btn btn-outline-primary btn-lg">Back to properties</a>
@@ -29,9 +43,13 @@
     </div>
 
     <div class="row m-4 border border-dark" name="propertyDetailsTemplate">
+
+        <!-- Image -->
         <div class="col m-3">
             <span>Image</span>
         </div>
+
+        <!-- Amenities table -->
         <div class="col m-3">
             <table class="table table-striped">
                 <thead>
@@ -42,6 +60,8 @@
                 </tbody>
             </table>
         </div>
+
+        <!-- More information details -->
         <div class="col m-3 background-dark">
             <div class="grid">
                 <tbody>
@@ -55,11 +75,7 @@
             </div>
         </div>
     </div>
-
-
 </div>
-
-
 <!-- End main body -->
 
 <!-- Optional JavaScript -->

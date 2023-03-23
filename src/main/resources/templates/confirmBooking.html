@@ -4,89 +4,87 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-  <title>J&Js Getaways</title>
+    <title>J&Js Getaways</title>
 </head>
 
-<body>
 <!-- Main Body of Page -->
+<body>
 <!-- Title -->
 <div class="container">
-  <div class="row m-4">
-    <div class="col text-center">
-      <img src="../static/images/logo-placeholder.jpg" alt="Website logo" style="float:left;width:80px;"
-           th:src="@{images/logo-placeholder.jpg}"/>
-      <h1>J&Js Getaways</h1>
+    <div class="col m-4">
+        <div class="col text-center">
+            <h1 style="font-size: 64px;">J&Js Getaways</h1>
+        </div>
     </div>
-  </div>
 </div>
 
-
-
+<!-- Property information -->
 <div class="row m-4 border border-dark" name="propertyDetailsTemplate">
-  <div class="col m-3">
-    <span>Image</span>
-  </div>
-  <div class="col m-3">
-
-  </div>
-  <div class="col m-3 background-dark">
-    <div class="grid">
-      <tbody>
-      <div class="row">Capacity: <span th:text="${p.capacity}"></span></div>
-      <div class="row">Property Type: <span th:text="${p.propertyType}"></span></div>
-      <div class="row">Rating: <span th:text="${p.rating}"></span> / 5</div>
-      </tbody>
+    <div class="col m-3">
+        <span>Image</span>
     </div>
-  </div>
-  <div class="col m-3 background-dark">
-    <tbody>
-    <div class="row">Guest: <span th:text="${g.firstName}"></span> <span th:text="${lastName}"></span></div>
-    <div class="row">Email: <span th:text="${g.email}"></span></div>
-    </tbody>
-  </div>
+    <div class="col m-3">
+
+    </div>
+    <div class="col m-3 background-dark">
+        <div class="grid">
+            <tbody>
+            <div class="row">Capacity: <span th:text="${p.capacity}"></span></div>
+            <div class="row">Property Type: <span th:text="${p.propertyType}"></span></div>
+            <div class="row">Rating: <span th:text="${p.rating}"></span> / 5</div>
+            </tbody>
+        </div>
+    </div>
+    <div class="col m-3 background-dark">
+        <tbody>
+        <div class="row">Guest: <span th:text="${g.firstName}"></span> <span th:text="${lastName}"></span></div>
+        <div class="row">Email: <span th:text="${g.email}"></span></div>
+        </tbody>
+    </div>
 </div>
+
+<!-- Gather booking details -->
 <div class="row m-4 border border-dark">
-  <div class="col m-3">
-    <form action="#" th:action="@{/confirmBooking}" method="POST" th:object="${b}" style="padding: 20px" class="form">
-      <input type="hidden" name="propertyID" th:value="${p.propertyID}"/>
-      <input type="hidden" name="guestID" th:value="${g.guestID}"/>
-      <div class="form-group row">
-        <div class="form-group col">
-          <label class="row-3 row-form-label">Guests </label>
-          <div class="col-9">
-            <input type="number" th:field="*{numberOfGuests}"/>
-          </div>
-        </div>
-        <div class="form-group col">
-          <label class="row-3 row-form-label">Start Date </label>
-          <div class="col-9">
-            <input type="date" th:field="*{startDate}"/>
-          </div>
-        </div>
-        <div class="form-group col">
-          <label class="row-3 row-form-label">End Date </label>
-          <div class="col-9">
-            <input type="date" th:field="*{endDate}"/>
-          </div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <button type="submit" class="btn btn-primary">Confirm</button>
-      </div>
-
-    </form>
-  </div>
-
+    <div class="col m-3">
+        <form action="#" th:action="@{/confirmBooking}" method="POST" th:object="${b}" style="padding: 20px"
+              class="form">
+            <input type="hidden" name="propertyID" th:value="${p.propertyID}"/>
+            <input type="hidden" name="guestID" th:value="${g.guestID}"/>
+            <div class="form-group row">
+                <div class="form-group col">
+                    <label class="row-3 row-form-label">Guests </label>
+                    <div class="col-9">
+                        <input type="number" th:field="*{numberOfGuests}"/>
+                    </div>
+                </div>
+                <div class="form-group col">
+                    <label class="row-3 row-form-label">Start Date </label>
+                    <div class="col-9">
+                        <input type="date" th:field="*{startDate}"/>
+                    </div>
+                </div>
+                <div class="form-group col">
+                    <label class="row-3 row-form-label">End Date </label>
+                    <div class="col-9">
+                        <input type="date" th:field="*{endDate}"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <button type="submit" class="btn btn-primary">Confirm</button>
+            </div>
+        </form>
+    </div>
 </div>
-  <!-- End main body -->
+<!-- End main body -->
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

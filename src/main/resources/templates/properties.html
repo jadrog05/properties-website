@@ -11,42 +11,54 @@
 
     <title>J&Js Getaways</title>
 </head>
-<body>
-<!-- Main Body of Page -->
-<div class="container">
-    <div class="row m-4">
-        <div class="col text-center border border-dark">
-            <h1>Displaying <span th:text="${numberOfProperties}"></span> of <span
-                    th:text="${totalProperties}"></span> properties in
-                <span th:text="${property.propertyLocation}"></span>:</h1>
-        </div>
 
-    </div>
-    <div class="row m-4 border border-dark">
-        <div class="col text-center m-3">
-            <td><a href="#" th:href="@{/filter(propertyLocation=${property.propertyLocation})}"
-                   class="btn btn-outline-primary btn">Filter</a></td>
-        </div>
-        <div class="col text-center m-3">
-            <a>Currently applied filters:</a>
-            <div style="display: block;">
-                Minimum capacity: <span th:text="${numberOfGuests}"></span>
-            </div>
-            <div style="display: block;">
-                Property type: <span th:text="${propertyType}"></span>
-            </div>
+<!-- Main Body of Page -->
+<body>
+<!-- Title -->
+<div class="container">
+    <div class="col m-4">
+        <div class="col text-center">
+            <h1 style="font-size: 64px;">J&Js Getaways</h1>
         </div>
     </div>
 </div>
 
-<!-- Attempt to make it a grid instead of rows -->
+<!-- Filter button & current filters -->
+<div class="col 2">
+    <div class="col text-center m-3">
+        <td><a href="#" th:href="@{/filter(propertyLocation=${property.propertyLocation})}"
+               class="btn btn-outline-primary btn-lg">Filter</a></td>
+    </div>
+    <div class="col text-center m-3">
+        <a>Currently applied filters:</a>
+        <div style="display: block;">
+            Minimum capacity: <span th:text="${numberOfGuests}"></span>
+        </div>
+        <div style="display: block;">
+            Property type: <span th:text="${propertyType}"></span>
+        </div>
+    </div>
+</div>
+
+<!-- Number of properties -->
+<div class="container">
+    <div class="row m-4">
+        <div class="col text-center">
+            <h3>Displaying <span th:text="${numberOfProperties}"></span> of <span
+                    th:text="${totalProperties}"></span> properties in
+                <span th:text="${property.propertyLocation}"></span>:</h3>
+        </div>
+    </div>
+</div>
+
+<!-- Property grid -->
 <div class="grid-container"
      style="display: grid; grid-template-columns: repeat(2, 1fr); grid-gap: 20px; padding: 20px;">
     <div th:each="property : ${properties}" class="propertyCard" style="border: 1px solid #ccc; padding: 20px;">
         <div style="display: flex;">
             <img th:src="@{images/logo-placeholder.jpg}" alt="Property image" style="float:left;width:200px;">
             <div style="margin-left: 20px;">
-                <h2 th:text="${property.propertyName}"></h2>
+                <h3 th:text="${property.propertyName}"></h3>
                 <div>
                     <div style="display: block;">
                         Capacity: <span th:text="${property.capacity}"></span>
@@ -72,8 +84,6 @@
         </div>
     </div>
 </div>
-
-
 <!-- End main body -->
 
 <!-- Optional JavaScript -->
