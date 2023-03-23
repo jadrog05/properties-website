@@ -36,15 +36,14 @@
 
 </style>
 <!-- Title (Looks better without main title) -->
-<div class="container" style="display: flex; justify-content: center; align-items: center; height: 40vh; padding-top:100px">
-    <div class="row m-4" style="display:flex; justify-content: center">
-        <div class="col  text-center">
-            <img src="../static/images/logo-placeholder.jpg" alt="Website logo" style="float:left;width:80px;"
-                 th:src="@{images/logo-placeholder.jpg}"/>
-            <h1>You're Going to <span th:text="${p.propertyLocation}"></span>!</h1>
+<div class="container">
+    <div class="row m-4">
+        <div class="col text-center">
+            <h1 style="color: white; font-size: 64px;">You're going to <span th:text="${p.propertyLocation}"></span></h1>
         </div>
     </div>
 </div>
+
 <div style="display: flex; justify-content: center; align-items: center; height: 40vh; padding-top:100px">
     <div class="col-8" style="justify-content: center; text-align: center; background-color: #fff; padding: 10px; box-shadow: 0 5px 20px -5px rgba(0,0,0,.3); border-radius: 4px;">
         <div class="row" style="justify-content: center">

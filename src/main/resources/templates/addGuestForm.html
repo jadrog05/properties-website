@@ -13,63 +13,94 @@
 </head>
 
 <!-- Main Body of Page -->
-<body>
-<!-- Title -->
-<div class="container">
-    <div class="col m-4">
-        <div class="col text-center">
-            <h1 style="font-size: 64px;">J&Js Getaways</h1>
-        </div>
-    </div>
-</div>
+<body th:style="'background-image: url(' + @{/images/home-background.jpg} + '); background-size: cover;
+    background-repeat: no-repeat; background-position: center center; min-height: 100vh; overflow: hidden;'">
 
-<!-- Add guest title -->
+<style>
+        body::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-color: rgba(47,103,177,.3)
+
+        .formContainer {
+            width: 500px;
+            clear: both;}
+
+        .formContainer input {
+            width: 100%;
+            clear: both;}
+        }
+
+</style>
 <div class="container">
     <div class="row m-4">
-        <div class="col text-center border border-dark">
-            <h1>Add Guest</h1>
+        <div class="col text-center">
+            <h1 style="color: white; font-size: 64px;">Add Guest</h1>
         </div>
     </div>
 </div>
 
-<!-- Form -->
-<div class="row m-4 border border-dark" name="add-guest-form">
-    <div class="col-7 text-center m-3 border border-dark">
-        <form action="#" th:action="@{/newGuest}" method="POST" th:object="${g}" style="padding: 20px" class="form">
-            <input type="hidden" name="propertyID" th:value="${p.propertyID}"/>
-            <div class="form-group row">
-                <label class="row-3 row-form-label">First Name </label>
-                <div class="col-9">
-                    <input type="text" th:field="*{firstName}"/>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="row-3 row-form-label">Last Name </label>
-                <div class="col-9 text right">
-                    <input type="text" th:field="*{lastName}"/>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="row-3 row-form-label">Email</label>
-                <div class="col-9">
-                    <input type="text" th:field="*{email}"/>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="row-3 row-form-label">Phone Number</label>
-                <div class="col-9">
-                    <input type="text" th:field="*{phoneNumber}"/>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="row-3 row-form-label">Postcode </label>
-                <div class="col-9">
-                    <input type="text" th:field="*{postcode}"/>
-                </div>
-            </div>
 
-            <button type="submit" class="btn btn-primary">Confirm</button>
-        </form>
+<div style="display: flex; justify-content: center; align-items: center; height: 40vh; padding-top:200px">
+    <div class="col-3"
+         style="text-align: center; background-color: #fff; padding: 30px; box-shadow: 0 5px 20px -5px rgba(0,0,0,.3); border-radius: 4px; justify-content:center; align-items: center display:flex">
+        <!-- Form -->
+                <form action="#" th:action="@{/addGuestForm}" method="POST" th:object="${g}" style="padding: 20px;">
+                    <input type="hidden" name="propertyID" th:value="${p.propertyID}"/>
+                    <table style="padding:10px display:flex" >
+                        <tr>
+                            <td align="left"><label class="row-3 row-form-label">First Name </label></td>
+                            <td align="right"><input type="text" th:field="*{firstName}"/></td>
+                        </tr>
+                        <tr>
+                            <td align="left"> <span style="color: red"th:if="${#fields.hasErrors('firstName')}"> Error:</span> </td>
+                            <td align="right"><span style="color:red" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span></td>
+                        </tr>
+                        <tr>
+                            <td align="left"><label class="row-3 row-form-label">Last Name </label></td>
+                            <td align="right"><input type="text" th:field="*{lastName}"/></td>
+                        </tr>
+                        <tr>
+                            <td align="left"> <span style="color: red" th:if="${#fields.hasErrors('lastName')}"> Error:</span> </td>
+                            <td align="right"><span style="color:red" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span></td>
+                        </tr>
+                        <tr>
+                            <td align="left"><label class="row-3 row-form-label">Email</label></td>
+                            <td align="right"><input type="text" th:field="*{email}"/></td>
+                        </tr>
+                        <tr>
+                            <td align="left"> <span style="color: red" th:if="${#fields.hasErrors('email')}"> Error:</span> </td>
+                            <td align="right"><span style="color:red"th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span></td>
+                        </tr>
+                        <tr>
+                            <td align="left"><label class="row-3 row-form-label">Phone Number</label></td>
+                            <td align="right"><input type="text" th:field="*{phoneNumber}"/></td>
+                        </tr>
+                        <tr>
+                            <td align="left"> <span style="color: red" th:if="${#fields.hasErrors('phoneNumber')}"> Error:</span> </td>
+                            <td align="right"><span style="color:red"th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span></td>
+                        </tr>
+                        <tr>
+                            <td align="left"><label class="row-3 row-form-label">Postcode </label></td>
+                            <td align="right"><input type="text" th:field="*{postcode}"/></td>
+                        </tr>
+                        <tr>
+                            <td align="left"> <span style="color: red" th:if="${#fields.hasErrors('postcode')}"> Error:</span> </td>
+                            <td align="right"><span style="color:red"th:if="${#fields.hasErrors('postcode')}" th:errors="*{postcode}"></span></td>
+                        </tr>
+                    </table>
+                    <div class="row" style="align-text: right">
+                        <button type="submit" class="btn btn-primary">Confirm</button>
+                    </div>
+
+
+                </form>
     </div>
 </div>
 <!-- End main body -->

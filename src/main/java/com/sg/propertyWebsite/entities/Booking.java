@@ -1,19 +1,38 @@
 package com.sg.propertyWebsite.entities;
 
+
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
+
+
+import java.time.LocalDate;
+
+
+import org.springframework.format.annotation.DateTimeFormat;
+import lombok.Data;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@Data
 public class Booking {
     private int bookingID;
     private int propertiesID;
     private int guestID;
+
+    @NotNull
+    @Min(value = 1, message = "You cant have 0 guests")
     private int numberOfGuests;
+    @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Future(message = "Start date should be in the future")
     private Date startDate;
+    @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Future(message = " End date should be in the future")
     private Date endDate;
     private double totalCost;
 

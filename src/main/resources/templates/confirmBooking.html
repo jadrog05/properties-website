@@ -63,18 +63,21 @@
                     <label class="row-3 row-form-label">Guests </label>
                     <div class="col-9">
                         <input type="number" th:field="*{numberOfGuests}"/>
+                        <p class="alert alert-danger" th:if="${#fields.hasErrors('numberOfGuests')}" th:errors="*{numberOfGuests}">
                     </div>
                 </div>
                 <div class="form-group col">
                     <label class="row-3 row-form-label">Start Date </label>
                     <div class="col-9">
                         <input type="date" th:field="*{startDate}"/>
+                        <p class="alert alert-danger" th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}">
                     </div>
                 </div>
                 <div class="form-group col">
                     <label class="row-3 row-form-label">End Date </label>
                     <div class="col-9">
                         <input type="date" th:field="*{endDate}"/>
+                        <p class="alert alert-danger" th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}">
                     </div>
                 </div>
             </div>
