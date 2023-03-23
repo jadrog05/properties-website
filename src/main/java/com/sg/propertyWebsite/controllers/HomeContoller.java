@@ -47,6 +47,7 @@ public class HomeContoller {
         model.addAttribute("properties", uniqueLocations);
     }
 
+
     @GetMapping("signin")
     public void getSignin(Model model) {
     }

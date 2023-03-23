@@ -9,6 +9,8 @@ public interface GuestDao {
     Guest getGuestByID(int id);
     Guest getGuestByEmail(String email);
 
+    Guest getGuestByEmail(String email);
+
     List<Guest> getAllGuests();
 
     Guest addGuest(Guest guest);

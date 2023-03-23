@@ -1,11 +1,24 @@
 package com.sg.propertyWebsite.entities;
 
+
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+
+
 public class Guest {
     private int guestID;
+    @NotEmpty
     private String firstName;
+    @NotEmpty
     private String lastName;
+    @NotEmpty
     private String email;
+    @NotNull
+    @Size(max = 10, min = 10, message = "Mobile number should be of 10 digits")
     private String phoneNumber;
+    @NotEmpty
     private String postcode;
 
     public int getGuestID() {

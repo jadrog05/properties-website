@@ -54,7 +54,7 @@
 <!-- Property grid -->
 <div class="grid-container"
      style="display: grid; grid-template-columns: repeat(2, 1fr); grid-gap: 20px; padding: 20px;">
-    <div th:each="property : ${properties}" class="propertyCard" style="border: 1px solid #ccc; padding: 20px;">
+    <div th:each="property : ${properties}" class="propertyCard" style="border: 1px solid #ccc; padding: 20px; background-color:white">
         <div style="display: flex;">
             <img th:src="@{images/logo-placeholder.jpg}" alt="Property image" style="float:left;width:200px;">
             <div style="margin-left: 20px;">
