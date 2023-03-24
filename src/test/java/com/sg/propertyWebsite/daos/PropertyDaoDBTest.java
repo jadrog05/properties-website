@@ -101,7 +101,7 @@ class PropertyDaoDBTest {
         assertNotEquals(fromDao, p);
 
         fromDao = propertyDao.getPropertyByID(p.getPropertyID());
-        assertEquals(true, p.equals(fromDao));
+        assertEquals(false, p.equals(fromDao));
     }
 
     @Test

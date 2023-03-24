@@ -71,7 +71,7 @@ class GuestDaoDBTest {
     }
 
     @Test
-    void testUpdateStudent(){
+    void testUpdateGuest(){
         Guest guest = new Guest();
         guest.setFirstName("Test first name");
         guest.setLastName("Test last name");
