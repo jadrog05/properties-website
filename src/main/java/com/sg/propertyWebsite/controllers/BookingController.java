@@ -75,6 +75,7 @@ public class BookingController {
             model.addAttribute("p", p);  // Add to model to be used on confirmBooking.html
             Booking b = new Booking();
             model.addAttribute("b", b);
+            model.addAttribute("a", propertyDao.getAmmentiesByID(p.getAmmenitiesID()));
             return "confirmBooking";
         }
     }
