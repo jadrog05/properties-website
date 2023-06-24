@@ -52,7 +52,7 @@ mvn spring-boot:run
 ## Contributors
 
 [James Astell](https://github.com/AstellJ11)  
-[Jaden Rodgers](https://github.com/jadrog05)
+[Jaden Rogers](https://github.com/jadrog05)
 
 ## License
 
