@@ -6,7 +6,9 @@ A full-stack Java web application that allows users to search for a location & a
 
 ## Features
 
-[...]
+* **Accommodation Search:** Users can search for accommodation options in different countries for a short stay using various filters such as location, dates, amenities, etc.
+* **Booking System:** Users can make bookings for their desired accommodations directly through the website. The booking details, including the user's information, selected dates, and accommodation details, will be securely stored in a MySQL database.
+* **User Authentication:** Implement a secure user authentication system to allow users to create accounts, log in, and manage their bookings. This ensures privacy and security for both users and their booking information. [WIP]
 
 ## Technologies Used
 
